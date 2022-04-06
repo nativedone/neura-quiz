@@ -44,6 +44,7 @@ export const tokens = {
     },
 
     space: {
+      x_8: "calc( 1 / 8 * var(--x))", // 0.25
       x_4: "calc( 1 / 4 * var(--x))", // 0.25
       x_2: "calc( 1 / 2 * var(--x))", // 0.50
       x: "var(--x)",
