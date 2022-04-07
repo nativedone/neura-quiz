@@ -47,7 +47,7 @@ const ShareContainer = styled("div", {
   cursor: "pointer",
   maxWidth: "10ch",
 
-  color: "black",
+  color: "white",
 
   "@media (hover: hover) and (pointer: fine)": {
     "&:hover": {
@@ -63,7 +63,8 @@ const IconContainer = styled("div", {
   /* Safari resize fix */
   minHeight: "0vw",
 
-  marginRight: "4px",
+  marginLeft: "$x_2",
+  marginRight: "$x_8",
 });
 
 const TextContainer = styled("div", {

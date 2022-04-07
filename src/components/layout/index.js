@@ -7,13 +7,11 @@ import { DevGuidelines } from "@components/dev-guidelines";
 
 export function Layout({ children }) {
   return (
-    <>
-      <LayoutContainer>
-        <Header />
-        <Main>{children}</Main>
-        {/* <DevGuidelines /> */}
-      </LayoutContainer>
-    </>
+    <LayoutContainer>
+      <Header />
+      <Main>{children}</Main>
+      {/* <DevGuidelines /> */}
+    </LayoutContainer>
   );
 }
 

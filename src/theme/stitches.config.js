@@ -2,6 +2,8 @@ import { createStitches } from "@stitches/react";
 
 import { tokens } from "./tokens";
 
+const withSizes = { ...tokens, theme: { ...tokens.theme, sizes: { ...tokens.theme.space } } };
+
 export const {
   styled,
   css,
@@ -11,4 +13,4 @@ export const {
   theme,
   createTheme,
   config,
-} = createStitches(tokens);
+} = createStitches(withSizes);

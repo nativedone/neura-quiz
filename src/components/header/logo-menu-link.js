@@ -2,24 +2,25 @@ import Link from "next/link";
 
 import { styled } from "@theme";
 
-import { LogoHome } from "@components/logo";
-
 export function LogoMenuLink() {
   return (
     <Link href="/" passHref>
-      <LogoContainer>
-        <LogoHome>Take quiz</LogoHome>
-      </LogoContainer>
+      <LogoHome>Take the Quiz</LogoHome>
     </Link>
   );
 }
 
-const LogoContainer = styled("a", {
+const LogoHome = styled("a", {
   display: "flex",
 
-  // TODO: update based on design
-  fontSize: "var(--header-logo-height)",
+  color: "white",
+  fontSize: "$-1",
+  fontWeight: "$normal",
+  lineHeight: "100%",
 
   /* Safari resize fix */
   minHeight: "0vw",
+
+  textDecoration: "underline",
+  textDecorationColor: "white",
 });
