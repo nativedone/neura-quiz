@@ -1,3 +1,11 @@
+import {styled } from "@theme"
+
+export const LogoHome = styled("div", {
+  color: 'white',
+
+  fontSize: "$0"
+})
+
 export const Logo = (props) => (
   <>
     <svg

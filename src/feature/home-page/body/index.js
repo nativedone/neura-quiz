@@ -38,7 +38,7 @@ const Button = styled("button", {
   fontSize: "$3",
   color: "white",
 
-  zIndex: "100",
+  zIndex: "$50",
 
   backgroundColor: "rgba(0, 0, 0, 0.7)",
   paddingTop: "$x_4",

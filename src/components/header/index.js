@@ -1,99 +1,37 @@
-import { useEffect, useState } from "react";
-import { useViewportScroll, motion } from "framer-motion";
-import useDebounce from "react-use/lib/useDebounce";
-
 import { styled } from "@theme";
-import { LargeContainer } from "@components/container";
+import { Container } from "@components/container";
 
 import { LogoMenuLink } from "./logo-menu-link";
-import { MobileMenu } from "./mobile-menu";
-import { DesktopMenu } from "./desktop-menu";
 
-const headerAnimationVariants = {
-  show: { opacity: 1, y: 0 },
-  hide: { opacity: 0, y: "-100%" },
-};
-
-export function Header({ shouldSticky, animateOnScroll }) {
-  const { scrollY } = useViewportScroll();
-
-  const [currentScroll, setCurrentScroll] = useState(0);
-  const [isHeaderVisible, setHeaderVisibility] = useState(true);
-  const [debouncedPreviousScroll, setDebouncedPreviousScroll] = useState(0);
-
-  const [, clearDebounceListener] = useDebounce(
-    () => {
-      setDebouncedPreviousScroll(currentScroll);
-    },
-    100,
-    [currentScroll]
-  );
-
-  useEffect(() => {
-    if (!animateOnScroll) {
-      return;
-    }
-
-    function updateScroll() {
-      const y = scrollY.get();
-
-      setCurrentScroll(y);
-      const delta = y - debouncedPreviousScroll;
-
-      if (delta > 0) {
-        setHeaderVisibility(false);
-      } else {
-        setHeaderVisibility(true);
-      }
-    }
-
-    const unsubscribeScrollY = scrollY.onChange(updateScroll);
-
-    return () => {
-      unsubscribeScrollY();
-      clearDebounceListener();
-    };
-  }, [animateOnScroll, debouncedPreviousScroll, clearDebounceListener]);
-
+export function Header() {
   return (
-    <MotionHeaderContainer
-      animate={isHeaderVisible ? "show" : "hide"}
-      variants={headerAnimationVariants}
-      className={shouldSticky ? "is-sticky" : ""}
-    >
+    <MotionHeaderContainer>
       <SemanticHeader>
-        <LargeContainer>
+        <Container>
           <SemanticNav>
             <LogoMenuLink />
 
-            <MobileMenu />
-            <DesktopMenu />
+            {/* Add share button here */}
           </SemanticNav>
-        </LargeContainer>
+        </Container>
       </SemanticHeader>
     </MotionHeaderContainer>
   );
 }
 
-const MotionHeaderContainer = styled(motion.div, {
+const MotionHeaderContainer = styled("div", {
   backgroundColor: "transparent",
-
-  "&.is-sticky": {
-    position: "fixed",
-    top: "0px",
-    left: "0px",
-    right: "0px",
-
-    // TODO: add z-index structure level to theme.js
-    zIndex: 999999,
-  },
+  position: "absolute",
+  top: 0,
+  left: 0,
+  right: 0,
+  zIndex: "$50"
 });
 
 const SemanticHeader = styled("header", {
-  transition: "all 0.3s ease-in-out 0s",
-  backgroundColor: "black",
+  backgroundColor: "red", //TODO: remove backgroundColor
 
-  height: "var(--header-height)",
+  height: "var(--header-height)", //TODO:  update value for header height o global.css
   display: "flex",
   alignItems: "center",
 });

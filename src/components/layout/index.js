@@ -2,24 +2,15 @@ import { styled } from "@theme";
 
 import { Header } from "@components/header";
 import { Main } from "@components/main";
-import { Footer } from "@components/footer";
 
 import { DevGuidelines } from "@components/dev-guidelines";
 
-export function Layout({
-  children,
-  animateHeaderOnScroll,
-  shouldStickyHeader,
-}) {
+export function Layout({ children }) {
   return (
     <>
       <LayoutContainer>
-        {/* <Header
-          animateOnScroll={animateHeaderOnScroll}
-          shouldSticky={shouldStickyHeader}
-        /> */}
+        <Header />
         <Main>{children}</Main>
-        {/* <Footer /> */}
         {/* <DevGuidelines /> */}
       </LayoutContainer>
     </>

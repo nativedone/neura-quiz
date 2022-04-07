@@ -1,20 +1,23 @@
+import Link from "next/link";
+
 import { styled } from "@theme";
 
-import { Logo } from "@components/logo";
-import { VisuallyHidden } from "@components/visually-hidden";
+import { LogoHome } from "@components/logo";
 
 export function LogoMenuLink() {
   return (
-    <LogoContainer href="https://msf.org.au/" target="_blank" rel="noreferrer">
-      <Logo />
-      <VisuallyHidden>Go back to homepage</VisuallyHidden>
-    </LogoContainer>
+    <Link href="/" passHref>
+      <LogoContainer>
+        <LogoHome>Take quiz</LogoHome>
+      </LogoContainer>
+    </Link>
   );
 }
 
 const LogoContainer = styled("a", {
   display: "flex",
 
+  // TODO: update based on design
   fontSize: "var(--header-logo-height)",
 
   /* Safari resize fix */
