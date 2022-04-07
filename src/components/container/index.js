@@ -25,7 +25,34 @@ export const Container = styled("div", {
         width: "85vw",
         backgroundColor: "orange",
       },
-    }
-  }
+    },
+  },
 });
 
+
+// Use this for testing only
+export const DemoAllContainers = () => {
+  const child = <div style={{ width: 100, height: 100 }} />;
+
+  return (
+    <>
+      <Container size={35}>{child}</Container>
+      <Container size={50}>{child}</Container>
+      <Container size={67}>{child}</Container>
+      <Container size={75}>{child}</Container>
+      <Container size={85}>{child}</Container>
+
+      {child}
+
+      <Container size={85}>
+        <Container size={75}>
+          <Container size={67}>
+            <Container size={50}>
+              <Container size={35}>{child}</Container>
+            </Container>
+          </Container>
+        </Container>
+      </Container>
+    </>
+  );
+};
