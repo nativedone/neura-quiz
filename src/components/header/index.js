@@ -43,7 +43,6 @@ const SemanticNav = styled("nav", {
   width: "85vw",
 
   "@3": {
-    justifyContent: "flex-end",
     width: "67vw",
   },
 });

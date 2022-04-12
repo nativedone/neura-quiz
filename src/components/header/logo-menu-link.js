@@ -5,7 +5,7 @@ import { styled } from "@theme";
 export function LogoMenuLink() {
   return (
     <Link href="/" passHref>
-      <LogoHome>Take the Quiz</LogoHome>
+      <LogoHome>Quiz</LogoHome>
     </Link>
   );
 }
@@ -20,7 +20,4 @@ const LogoHome = styled("a", {
 
   /* Safari resize fix */
   minHeight: "0vw",
-
-  textDecoration: "underline",
-  textDecorationColor: "white",
 });
