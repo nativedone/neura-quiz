@@ -8,11 +8,11 @@ const BackgroundVideoDesktop = dynamic(() =>
   import("./background-video-desktop").then((mod) => mod.BackgroundVideoDesktop)
 );
 
-export function BackgroundVideo({ start }) {
+export function BackgroundVideo({ hasStarted }) {
   return (
     <BackgroundVideoContainer>
       <PortraitOnly>
-        <BackgroundVideoMobile start={start} />
+        <BackgroundVideoMobile hasStarted={hasStarted} />
       </PortraitOnly>
 
       <LandscapeOnly>
@@ -27,13 +27,12 @@ const BackgroundVideoContainer = styled("div", {
 
   // https://stackoverflow.com/questions/27850472/html5-video-background-keep-center-of-video-in-center
   position: "absolute",
-    top: "-50%",
-    left: "-50%",
-    width: "200%",
-    height: "200%",
+  top: "-50%",
+  left: "-50%",
+  width: "200%",
+  height: "200%",
 
-  backgroundColor: '#1E2C38'
-
+  backgroundColor: "#1E2C38",
 });
 
 const PortraitOnly = styled("div", {

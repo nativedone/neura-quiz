@@ -3,19 +3,42 @@ import { styled } from "@theme";
 
 import { useState } from "react";
 
+import { Button } from "@components/button";
+
 const BackgroundVideo = dynamic(() =>
   import("../background-video").then((mod) => mod.BackgroundVideo)
 );
 
-import { Container, DemoAllContainers } from "@components/container";
+const SubscribeForm = dynamic(() =>
+  import("../subscribe-form").then((mod) => mod.SubscribeForm)
+);
+
+const Quiz = dynamic(() => import("../quiz").then((mod) => mod.Quiz));
+
+// -------- States
+// idle: user has landed into the page
+// subscribing: user is filling in the consent form
+// answering: user is answering the quiz
 
 export function Body() {
-  const [start, setStart] = useState();
+  const [state, setState] = useState("idle");
   return (
-    <BodyContainer onClick={() => setStart(!start)}>
-      <BackgroundVideo start={start} />
-      <Button>TAKE THE QUIZ</Button>
-      {/* <DemoAllContainers /> */}
+    <BodyContainer
+      onClick={() => setState((prev) => (prev === "idle" ? "" : "idle"))}
+    >
+      <BackgroundVideo hasStarted={state !== "idle"} />
+
+      {/* {state === "idle" && (
+        <ButtonContainer>
+          <Button onClick={() => setState("subscribing")}>TAKE THE QUIZ</Button>
+        </ButtonContainer>
+      )} */}
+
+      {/* <Quiz /> */}
+
+      {/* {state === "subscribing" && <SubscribeForm onSuccess={() => setState("answering")} />} */}
+
+      {state === "answering" && <Quiz />}
     </BodyContainer>
   );
 }
@@ -32,33 +55,7 @@ const BodyContainer = styled("div", {
   height: "100vh",
 });
 
-const Button = styled("button", {
+const ButtonContainer = styled("div", {
   // overflow: "hidden",
-
-  fontSize: "$3",
-  color: "white",
-
   zIndex: "$50",
-
-  backgroundColor: "rgba(0, 0, 0, 0.7)",
-  paddingTop: "$x_4",
-  paddingBottom: "$x_4",
-  paddingLeft: "$x_2",
-  paddingRight: "$x_2",
-
-  border: "2px solid white",
-
-  "@3": {
-    paddingTop: "$x_8",
-    paddingBottom: "$x_8",
-    paddingLeft: "$x_4",
-    paddingRight: "$x_4",
-  },
-  "@media (hover: hover) and (pointer: fine)": {
-    "&:hover": {
-      cursor: "pointer",
-      backgroundColor: "white",
-      color: "black",
-    },
-  },
 });

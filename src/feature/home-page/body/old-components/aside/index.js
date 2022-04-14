@@ -1,7 +1,7 @@
 import { styled } from "@theme";
 
 import { HospitalVideo } from "./hospital-video";
-import { Subscribe } from "./subscribe";
+import { Subscribe } from "../../../subscribe-form";
 
 export function Aside() {
   return (
