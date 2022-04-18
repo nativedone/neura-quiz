@@ -111,7 +111,7 @@ const Box = styled("div", {
   backgroundColor: "rgba(0, 0, 0, 0.5)",
   padding: "$x_2",
 
-  margin: "auto",
+  margin: "auto",// TODO: fix for mobile
 
   zIndex: "$50",
   width: "85vw",

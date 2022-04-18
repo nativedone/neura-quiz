@@ -26,7 +26,6 @@ export function Body() {
     <BodyContainer
       // onClick={() => setState((prev) => (prev === "idle" ? "" : "idle"))}
     >
-      <BackgroundVideo hasStarted={state !== "idle"} />
 
       {state === "idle" && (
         <ButtonContainer>
@@ -41,6 +40,8 @@ export function Body() {
       )}
 
       {state === "answering" && <Quiz />}
+      <BackgroundVideo hasStarted={state !== "idle"} />
+
     </BodyContainer>
   );
 }
@@ -50,8 +51,10 @@ const BodyContainer = styled("div", {
 
   position: "relative",
 
-  display: "grid",
-  placeItems: "center",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "flex-end",
+  // placeItems: "end center",
 
   width: "100vw",
   height: "100vh",

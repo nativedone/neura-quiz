@@ -3,7 +3,8 @@ import { styled } from "@theme";
 export function BackgroundVideoMobile({ hasStarted }) {
   return (
     <Video autoPlay muted loop playsInline className={hasStarted ? "zoom-out" : ""}>
-      <source src="/assets/neura-extended-video-1920x4000.webm" type="video/mp4" />
+      {/* <source src="/assets/neura-extended-video-480x1000.mp4" type="video/mp4" /> */}
+      <source src="/assets/neura-extended-video-1920x4000.mp4" type="video/mp4" />
     </Video>
   );
 }

@@ -195,13 +195,13 @@ const SubscribeContainer = styled("div", {
   backgroundColor: "rgba(0, 0, 0, 0.5)",
   padding: "$x_2",
   borderRadius: "$2xl",
-  margin: "auto",
-
   zIndex: "$50",
   width: "85vw",
+  marginBottom: "$3x_2",
 
   "@3": {
     width: "35vw",
+    margin: "auto",
   },
 
   "&.has-validation-errors": {
