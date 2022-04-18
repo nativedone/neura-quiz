@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 
 import { styled } from "@theme";
 import { emailPattern } from "@utils/validations/email";
-import { Button } from "@components/button"
+import { Button } from "@components/button";
 
 export function SubscribeForm({ onSuccess }) {
   const [status, setStatus] = useState("idle");
@@ -24,6 +24,11 @@ export function SubscribeForm({ onSuccess }) {
     const { email, firstName, lastName, mobile, postCode } = values;
 
     setStatus("loading");
+
+    setStatus("success");
+    onSuccess();
+
+    return
 
     fetch(process.env.NEXT_PUBLIC_SUBSCRIBE_URL, {
       method: "POST",
@@ -46,7 +51,7 @@ export function SubscribeForm({ onSuccess }) {
         }
 
         setStatus("success");
-        onSuccess()
+        onSuccess();
       })
       .catch((error) => {
         setStatus("error");
@@ -55,13 +60,11 @@ export function SubscribeForm({ onSuccess }) {
   };
 
   let information = (
-    <>
-      <p className="description">
-        MAX 30 WORDS in this quiz, I agree TBC ribusa ducipid isimpori autemos
-        truptus. Ersperum rectium endelest, excepratur, nectota epudigni
-        comnimuscim aut voluptatur acillit, ut omnis mi, que voloribus volupicab
-      </p>
-    </>
+    <p className="description">
+      MAX 30 WORDS in this quiz, I agree TBC ribusa ducipid isimpori autemos
+      truptus. Ersperum rectium endelest, excepratur, nectota epudigni
+      comnimuscim aut voluptatur acillit, ut omnis mi, que voloribus volupicab
+    </p>
   );
 
   if (status === "error") {
@@ -163,11 +166,7 @@ function Field(props) {
         aria-invalid={error ? "true" : "false"}
         {...otherProps}
       />
-      {error && (
-        <FieldErrorMessage role="alert">
-          {error}
-        </FieldErrorMessage>
-      )}
+      {error && <FieldErrorMessage role="alert">{error}</FieldErrorMessage>}
     </>
   );
 }
@@ -207,7 +206,7 @@ const SubscribeContainer = styled("div", {
 
   "&.has-validation-errors": {
     backgroundColor: "rgb(0, 0, 0)",
-  }
+  },
 });
 
 const FormContainer = styled("div", {

@@ -5,8 +5,8 @@ export function Share() {
     navigator
       .share(
         {
-          title: "READ MOMOH’S STORY",
-          text: "An ambulance pulls up in front of our hospital in Kenema, Sierra Leone...",
+          title: "Take this quiz", // 20 characters max
+          text: "Ready for a challenge? Let's see what you know about the brain...", // 20 characters max
           url: location.href,
         },
         {

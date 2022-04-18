@@ -24,19 +24,21 @@ export function Body() {
   const [state, setState] = useState("idle");
   return (
     <BodyContainer
-      onClick={() => setState((prev) => (prev === "idle" ? "" : "idle"))}
+      // onClick={() => setState((prev) => (prev === "idle" ? "" : "idle"))}
     >
       <BackgroundVideo hasStarted={state !== "idle"} />
 
-      {/* {state === "idle" && (
+      {state === "idle" && (
         <ButtonContainer>
           <Button onClick={() => setState("subscribing")}>TAKE THE QUIZ</Button>
         </ButtonContainer>
-      )} */}
+      )}
 
       {/* <Quiz /> */}
 
-      {/* {state === "subscribing" && <SubscribeForm onSuccess={() => setState("answering")} />} */}
+      {state === "subscribing" && (
+        <SubscribeForm onSuccess={() => setState("answering")} />
+      )}
 
       {state === "answering" && <Quiz />}
     </BodyContainer>
