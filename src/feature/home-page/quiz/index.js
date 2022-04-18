@@ -43,7 +43,7 @@ export function Quiz() {
             <br />– Dr Steve Kassam
           </p>
           <p className="paragraph">
-            Click <a href="#">here</a> to come on a discovery journey into the
+            Click <a className="external-link" href="#">here</a> to come on a discovery journey into the
             brain with NeuRA.
           </p>
         </Box>
@@ -149,6 +149,10 @@ const Box = styled("div", {
     "+ p.paragraph": {
       paddingTop: "0.5em",
     },
+  },
+
+  "a.external-link": {
+    textDecoration: "underline"
   },
 
   "@3": {
