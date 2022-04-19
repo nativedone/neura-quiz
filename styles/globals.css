@@ -19,18 +19,19 @@ body {
 :root {
   /* ----------------- Typography scale system: ----------------- */
   /* https://utopia.fyi/type/calculator/?c=320,16,1.1179,2560,32,1.143,5,6,&s=0.75%7C0.5%7C0.25,1.5%7C2%7C3%7C4%7C6,s-l */
-  --step--6: clamp(0.9rem, calc(0.46rem + 0.27vw), 0.51rem);
+
+  --step--6: clamp(0.90rem, calc(0.46rem + 0.27vw), 0.51rem);
   --step--5: clamp(1.03rem, calc(0.51rem + 0.32vw), 0.57rem);
-  --step--4: clamp(1.17rem, calc(0.56rem + 0.38vw), 0.64rem);
-  --step--3: clamp(1.34rem, calc(0.63rem + 0.45vw), 0.72rem);
-  --step--2: clamp(1.53rem, calc(0.7rem + 0.52vw), 0.8rem);
-  --step--1: clamp(1.75rem, calc(0.77rem + 0.61vw), 0.89rem);
-  --step-0: clamp(1rem, calc(0.86rem + 0.71vw), 2rem);
+  --step--4: clamp(0.64rem, calc(0.56rem + 0.38vw), 1.17rem);
+  --step--3: clamp(0.72rem, calc(0.63rem + 0.45vw), 1.34rem);
+  --step--2: clamp(0.80rem, calc(0.70rem + 0.52vw), 1.53rem);
+  --step--1: clamp(0.89rem, calc(0.77rem + 0.61vw), 1.75rem);
+  --step-0: clamp(1.00rem, calc(0.86rem + 0.71vw), 2.00rem);
   --step-1: clamp(1.12rem, calc(0.95rem + 0.83vw), 2.29rem);
   --step-2: clamp(1.25rem, calc(1.06rem + 0.97vw), 2.61rem);
-  --step-3: clamp(1.4rem, calc(1.17rem + 1.14vw), 2.99rem);
-  --step-4: clamp(1.56rem, calc(1.3rem + 1.32vw), 3.41rem);
-  --step-5: clamp(1.75rem, calc(1.44rem + 1.54vw), 3.9rem);
+  --step-3: clamp(1.40rem, calc(1.17rem + 1.14vw), 2.99rem);
+  --step-4: clamp(1.56rem, calc(1.30rem + 1.32vw), 3.41rem);
+  --step-5: clamp(1.75rem, calc(1.44rem + 1.54vw), 3.90rem);
 
   /* ----------------- Primary palette colors: ----------------- */
 
