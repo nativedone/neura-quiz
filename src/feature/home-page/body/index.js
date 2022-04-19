@@ -51,8 +51,8 @@ const BodyContainer = styled("div", {
   display: "flex",
   justifyContent: "center",
 
-  paddingTop: "$4x",
-  paddingBottom: "$4x",
+  paddingTop: "$2x",
+  paddingBottom: "$2x",
 
   // backgroundColor: "red",
 
