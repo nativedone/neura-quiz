@@ -24,16 +24,14 @@ export function Body() {
   const [state, setState] = useState("idle");
   return (
     <BodyContainer
+      className={state}
       // onClick={() => setState((prev) => (prev === "idle" ? "" : "idle"))}
     >
-
       {state === "idle" && (
         <ButtonContainer>
           <Button onClick={() => setState("subscribing")}>TAKE THE QUIZ</Button>
         </ButtonContainer>
       )}
-
-      {/* <Quiz /> */}
 
       {state === "subscribing" && (
         <SubscribeForm onSuccess={() => setState("answering")} />
@@ -41,7 +39,6 @@ export function Body() {
 
       {state === "answering" && <Quiz />}
       <BackgroundVideo hasStarted={state !== "idle"} />
-
     </BodyContainer>
   );
 }
@@ -53,11 +50,21 @@ const BodyContainer = styled("div", {
 
   display: "flex",
   justifyContent: "center",
-  alignItems: "flex-end",
-  // placeItems: "end center",
+  paddingTop: "$x",
+  paddingBottom: "$x",
+
+  // backgroundColor: "red",
 
   width: "100vw",
   height: "100vh",
+
+  alignItems: "flex-end",
+  "&.idle": {
+    alignItems: "center",
+  },
+  "@3": {
+    alignItems: "center",
+  },
 });
 
 const ButtonContainer = styled("div", {

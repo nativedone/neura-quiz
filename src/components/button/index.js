@@ -7,7 +7,7 @@ export const Button = styled("button", {
   paddingLeft: "$x_2",
   paddingRight: "$x_2",
 
-  outline: "2px solid white",
+  border: "2px solid white",
 
   "@3": {
     paddingTop: "$x_8",
@@ -24,6 +24,10 @@ export const Button = styled("button", {
       backgroundColor: "white",
       color: "black",
     },
+  },
+
+  "+ button": {
+    borderTop: "none",
   },
 
 

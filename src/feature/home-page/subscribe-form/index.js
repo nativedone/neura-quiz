@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import { styled } from "@theme";
@@ -7,6 +7,11 @@ import { Button } from "@components/button";
 
 export function SubscribeForm({ onSuccess }) {
   const [status, setStatus] = useState("idle");
+  const [scale, setScale] = useState(0);
+
+  useEffect(() => {
+    setScale(1);
+  }, []);
 
   const {
     register,
@@ -28,7 +33,7 @@ export function SubscribeForm({ onSuccess }) {
     setStatus("success");
     onSuccess();
 
-    return
+    return;
 
     fetch(process.env.NEXT_PUBLIC_SUBSCRIBE_URL, {
       method: "POST",
@@ -80,6 +85,7 @@ export function SubscribeForm({ onSuccess }) {
   return (
     <SubscribeContainer
       className={hasValidationErrors ? "has-validation-errors" : ""}
+      style={{ transform: `scale(${scale})` }}
     >
       <FormContainer>
         <span className="heading">Fill in your details to start the quiz!</span>
@@ -207,6 +213,8 @@ const SubscribeContainer = styled("div", {
   "&.has-validation-errors": {
     backgroundColor: "rgb(0, 0, 0)",
   },
+
+  transition: "transform 1000ms ease-in",
 });
 
 const FormContainer = styled("div", {

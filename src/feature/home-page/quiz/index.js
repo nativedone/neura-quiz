@@ -1,10 +1,10 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 import { styled } from "@theme";
 import { Button } from "@components/button";
 import { Logo } from "@components/logo";
 
-import { data } from './data'
+import { data } from "./data";
 
 export function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -28,7 +28,7 @@ export function Quiz() {
 
   if (currentQuestion === data.length) {
     return (
-      <Container>
+      <Container key="result">
         <Box className="has-radius">
           <span className="heading">
             {`You got ${score} out of ${data.length} correct!`}
@@ -43,8 +43,11 @@ export function Quiz() {
             <br />– Dr Steve Kassam
           </p>
           <p className="paragraph">
-            Click <a className="external-link" href="#">here</a> to come on a discovery journey into the
-            brain with NeuRA.
+            Click{" "}
+            <a className="external-link" href="#">
+              here
+            </a>{" "}
+            to come on a discovery journey into the brain with NeuRA.
           </p>
         </Box>
         <Navigation>
@@ -59,23 +62,25 @@ export function Quiz() {
 
   if (currentAnswerStatus === "idle") {
     return (
-      <Box className="has-border">
-        <p className="question">{data[currentQuestion].question}</p>
-        {data[currentQuestion].options.map((option, index) => (
-          <Button
-            key={`${currentQuestion}__${option.label}`}
-            variant="secondary"
-            onClick={() => handleOptionClicked(index)}
-          >
-            {option.label}
-          </Button>
-        ))}
-      </Box>
+      <Container key="question">
+        <Box className="has-border">
+          <p className="question">{data[currentQuestion].question}</p>
+          {data[currentQuestion].options.map((option, index) => (
+            <Button
+              key={`${currentQuestion}__${option.label}`}
+              variant="secondary"
+              onClick={() => handleOptionClicked(index)}
+            >
+              {option.label}
+            </Button>
+          ))}
+        </Box>
+      </Container>
     );
   }
 
   return (
-    <Container>
+    <Container key="partial-result">
       <Box className="has-radius">
         <span className="heading">
           {data[currentQuestion].explanation.title}
@@ -111,7 +116,7 @@ const Box = styled("div", {
   backgroundColor: "rgba(0, 0, 0, 0.5)",
   padding: "$x_2",
 
-  margin: "auto",// TODO: fix for mobile
+  margin: "auto", // TODO: fix for mobile
 
   zIndex: "$50",
   width: "85vw",
@@ -152,7 +157,7 @@ const Box = styled("div", {
   },
 
   "a.external-link": {
-    textDecoration: "underline"
+    textDecoration: "underline",
   },
 
   "@3": {
@@ -160,7 +165,21 @@ const Box = styled("div", {
   },
 });
 
-const Container = styled("div", {
+export function Container({ children }) {
+  const [scale, setScale] = useState(0);
+
+  useEffect(() => {
+    setScale(1);
+  }, []);
+
+  return (
+    <BaseContainer style={{ transform: `scale(${scale})` }}>
+      {children}
+    </BaseContainer>
+  );
+}
+
+const BaseContainer = styled("div", {
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
@@ -174,6 +193,8 @@ const Container = styled("div", {
   "@3": {
     width: "50vw",
   },
+
+  transition: "transform 500ms ease-in",
 });
 
 const Navigation = styled("div", {
@@ -197,17 +218,26 @@ const Pagination = styled("div", {
 
   span: {
     border: "2px solid white",
-    width: "$x_4",
-    height: "$x_4",
+    width: "$x_2",
+    height: "$x_2",
+  
     borderRadius: "$full",
 
     "&.is-answered": {
       backgroundColor: "white",
     },
     "+ span": {
-      marginLeft: "$x_8",
+      marginLeft: "$x_4",
     },
 
-    cursor: "not-allowed"
+    "@3": {
+      width: "$x_4",
+      height: "$x_4",
+      "+ span": {
+        marginLeft: "$x_8",
+      },
+    },
+
+    cursor: "not-allowed",
   },
 });
