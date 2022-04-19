@@ -35,63 +35,16 @@ body {
 
   /* ----------------- Primary palette colors: ----------------- */
 
-  /* Buttons */
-  --color-primary-button-background: #ee0000;
-  --color-primary-button-background-hover: #7a2936;
-  --color-primary-button-text: #ffffff;
-
-  --color-secondary-button-background: #66675d;
-  --color-secondary-button-background-hover: #2b2e34;
-  --color-secondary-button-text: #ffffff;
-
   /* Body */
-  --color-primary-body-text: #000000;
-  --color-secondary-body-text: #66675e;
+  --color-primary-body-text: #ffffff;
+  --color-primary-body-text-on-hover: #000000;
 
-  --color-primary-body-background: #f8f8f7;
-  --color-secondary-body-background: #ffffff;
-  --color-tertiary-body-background: #000000;
+  --color-primary-body-background: #000000;
+
 
   /*  ----------------- Space props:  ----------------- */
   /* 1.25rem(20px) @ 20rem(320px) increasing to 10.3125rem(165px) @ 160rem(2560px) */
   --x: clamp(1.25rem, calc(1.25rem + ((1vw - 0.2rem) * 6.4732)), 10.3125rem);
-
-  /* ----------------- Header props: ----------------- */
-
-  /* 1.25rem(20px) @ 20rem(320px) increasing to 3rem(48px) @ 160rem(2560px) */
-  --header-vertical-padding: clamp(
-    1.25rem,
-    calc(1.25rem + ((1vw - 0.2rem) * 1.25)),
-    3rem
-  );
-
-  /* 2.16375rem(34.62px) @ 20rem(320px) increasing to 5.75rem(92px) @ 160rem(2560px) */
-  --header-logo-height: clamp(
-    2.16375rem,
-    calc(2.16375rem + ((1vw - 0.2rem) * 2.5616)),
-    5.75rem
-  );
-
-  --header-height: calc(
-    2 * var(--header-vertical-padding) + var(--header-logo-height)
-  );
-
-  /* ----------------- Buttons props: ----------------- */
-  /* 0.6875rem(11px) @ 20rem(320px) increasing to 1.6875rem(27px) @ 160rem(2560px) */
-  --button-horizontal-padding: clamp(
-    0.6875rem,
-    calc(0.6875rem + ((1vw - 0.2rem) * 0.7143)),
-    1.6875rem
-  );
-
-  /* 0.573125rem(9.17px) @ 20rem(320px) increasing to 1.40625rem(22.5px) @ 160rem(2560px) */
-  --button-vertical-padding: clamp(
-    0.573125rem,
-    calc(0.573125rem + ((1vw - 0.2rem) * 0.5951)),
-    1.40625rem
-  );
-
-  --button-minimum-height: 36px;
 
   /* Safari resize fix */
   min-height: 0vw;
@@ -99,7 +52,7 @@ body {
 
 body {
   color: var(--color-primary-body-text);
-  background-color: var(--color-tertiary-body-background);
+  background-color: var(--color-primary-body-background);
   font-weight: var(--font-weight-regular);
   line-height: 1.375;
 }
