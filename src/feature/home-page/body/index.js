@@ -52,7 +52,7 @@ const BodyContainer = styled("div", {
   justifyContent: "center",
 
   paddingTop: "$2x",
-  paddingBottom: "$2x",
+  paddingBottom: "$4x",
 
   // backgroundColor: "red",
 
