@@ -5,9 +5,13 @@ import { useRouter } from "next/router";
 import * as gtag from "@lib/gtm";
 import "@styles/globals.css";
 
+import { disableBodyScroll } from "body-scroll-lock";
+
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   useEffect(() => {
+    const targetElement = document.querySelector("body");
+    disableBodyScroll(targetElement);
     const handleRouteChange = (url) => {
       gtag.pageView(url);
     };
