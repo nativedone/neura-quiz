@@ -6,7 +6,7 @@ export function Share() {
       .share(
         {
           title: "Take this quiz", // 20 characters max
-          text: "Ready for a challenge? Let's see what you know about the brain...", // 20 characters max
+          text: "Ready for a challenge? Let's see what you know about the brain...", // 70 characters max
           url: location.href,
         },
         {

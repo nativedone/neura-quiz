@@ -184,7 +184,11 @@ const Navigation = styled("div", {
 
   width: "100%",
 
-  fontSize: 55,
+  /* 2rem(32px) @ 20rem(320px) increasing to 3.4375rem(55px) @ 160rem(2560px) */
+  fontSize: "clamp(2rem, calc(2rem + ((1vw - 0.2rem) * 1.0268)), 3.4375rem)",
+
+  /* Safari resize fix */
+  minHeight: "0vw",
 });
 
 const Pagination = styled("div", {
