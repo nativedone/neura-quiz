@@ -51,7 +51,7 @@ export const tokens = {
       x: "var(--x)",
       "3x_2": "calc( 3 / 2 * var(--x))", // 1.5
       "2x": "calc( 2 * var(--x))",
-      "4x": "calc( 3 * var(--x))",
+      "3x": "calc( 3 * var(--x))",
     },
     radii: {
       none: "0px",

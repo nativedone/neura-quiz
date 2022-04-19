@@ -190,7 +190,7 @@ const BaseContainer = styled("div", {
 
   width: "85vw",
   // paddingTop: "$x",
-  paddingBottom: "$2x",
+  paddingBottom: "$3x",
 
   "@3": {
     width: "50vw",
