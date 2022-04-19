@@ -189,9 +189,13 @@ const BaseContainer = styled("div", {
   zIndex: "$50",
 
   width: "85vw",
+  // paddingTop: "$x",
+  paddingBottom: "$2x",
 
   "@3": {
     width: "50vw",
+    // paddingTop: "0px",
+    paddingBottom: "0px",
   },
 
   transition: "transform 500ms ease-in",
