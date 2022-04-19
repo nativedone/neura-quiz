@@ -104,7 +104,7 @@ export function SubscribeForm({ onSuccess }) {
           />
 
           <Field
-            label="mobile"
+            label="mobile" // TODO: change to phone_number
             register={register}
             validation={{
               required: "Please provide a valid mobile number",
@@ -114,7 +114,7 @@ export function SubscribeForm({ onSuccess }) {
               // },
             }}
             error={errors?.mobile?.message}
-            placeholder="Mobile"
+            placeholder="Phone number"
           />
           <Field
             label="email"
