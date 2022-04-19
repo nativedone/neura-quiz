@@ -166,17 +166,13 @@ const Box = styled("div", {
 });
 
 export function Container({ children }) {
-  const [scale, setScale] = useState(0);
+  const [opacity, setOpacity] = useState(0);
 
   useEffect(() => {
-    setScale(1);
+    setOpacity(1);
   }, []);
 
-  return (
-    <BaseContainer style={{ transform: `scale(${scale})` }}>
-      {children}
-    </BaseContainer>
-  );
+  return <BaseContainer style={{ opacity }}>{children}</BaseContainer>;
 }
 
 const BaseContainer = styled("div", {
@@ -198,7 +194,7 @@ const BaseContainer = styled("div", {
     paddingBottom: "0px",
   },
 
-  transition: "transform 500ms ease-in",
+  transition: "opacity 1000ms",
 });
 
 const Navigation = styled("div", {
@@ -224,7 +220,7 @@ const Pagination = styled("div", {
     border: "2px solid white",
     width: "$x_2",
     height: "$x_2",
-  
+
     borderRadius: "$full",
 
     "&.is-answered": {

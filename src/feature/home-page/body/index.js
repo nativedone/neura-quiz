@@ -23,10 +23,7 @@ const Quiz = dynamic(() => import("../quiz").then((mod) => mod.Quiz));
 export function Body() {
   const [state, setState] = useState("idle");
   return (
-    <BodyContainer
-      className={state}
-      // onClick={() => setState((prev) => (prev === "idle" ? "" : "idle"))}
-    >
+    <BodyContainer className={state}>
       {state === "idle" && (
         <ButtonContainer>
           <Button onClick={() => setState("subscribing")}>TAKE THE QUIZ</Button>
@@ -69,6 +66,5 @@ const BodyContainer = styled("div", {
 });
 
 const ButtonContainer = styled("div", {
-  // overflow: "hidden",
   zIndex: "$50",
 });
