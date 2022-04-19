@@ -50,8 +50,9 @@ const BodyContainer = styled("div", {
 
   display: "flex",
   justifyContent: "center",
-  paddingTop: "$x",
-  paddingBottom: "$x",
+
+  paddingTop: "$4x",
+  paddingBottom: "$4x",
 
   // backgroundColor: "red",
 
@@ -64,6 +65,8 @@ const BodyContainer = styled("div", {
   },
   "@3": {
     alignItems: "center",
+    paddingTop: "$x",
+    paddingBottom: "$x",
   },
 });
 
