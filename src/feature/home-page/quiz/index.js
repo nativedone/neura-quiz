@@ -49,13 +49,13 @@ export function Quiz() {
             </a>{" "}
             to come on a discovery journey into the brain with NeuRA.
           </p>
+          <Navigation>
+            <Logo />
+            <Button variant="secondary" onClick={() => {}}>
+              DISCOVER MORE
+            </Button>
+          </Navigation>
         </Box>
-        <Navigation>
-          <Logo />
-          <Button variant="secondary" onClick={() => {}}>
-            DISCOVER MORE
-          </Button>
-        </Navigation>
       </Container>
     );
   }
@@ -90,22 +90,22 @@ export function Quiz() {
             {text}
           </p>
         ))}
+        <Navigation>
+          <Pagination>
+            {data.map((_, index) => (
+              <span
+                key={`pagination__${index}`}
+                className={index <= currentQuestion ? "is-answered" : ""}
+              />
+            ))}
+            {/* extra */}
+            <span />
+          </Pagination>
+          <Button variant="secondary" onClick={handleNextClicked}>
+            NEXT
+          </Button>
+        </Navigation>
       </Box>
-      <Navigation>
-        <Pagination>
-          {data.map((_, index) => (
-            <span
-              key={`pagination__${index}`}
-              className={index <= currentQuestion ? "is-answered" : ""}
-            />
-          ))}
-          {/* extra */}
-          <span />
-        </Pagination>
-        <Button variant="secondary" onClick={handleNextClicked}>
-          NEXT
-        </Button>
-      </Navigation>
     </Container>
   );
 }
@@ -114,7 +114,9 @@ const Box = styled("div", {
   display: "flex",
   flexDirection: "column",
   backgroundColor: "rgba(0, 0, 0, 0.5)",
-  padding: "$x_2",
+  padding: "$x",
+
+  position: "relative",
 
   margin: "auto", // TODO: fix for mobile
 
@@ -162,6 +164,7 @@ const Box = styled("div", {
 
   "@3": {
     width: "35vw",
+    padding: "$x_2",
   },
 });
 
@@ -180,17 +183,15 @@ const BaseContainer = styled("div", {
   flexDirection: "column",
   justifyContent: "center",
 
-  // backgroundColor: "red",
+  // backgroundColor: "green",
 
   zIndex: "$50",
 
   width: "85vw",
-  // paddingTop: "$x",
-  paddingBottom: "$3x",
+  paddingBottom: "$3x", // parent already has x. So, total is 4x
 
   "@3": {
     width: "50vw",
-    // paddingTop: "0px",
     paddingBottom: "0px",
   },
 
@@ -201,9 +202,17 @@ const Navigation = styled("div", {
   display: "flex",
   justifyContent: "space-between",
 
-  paddingTop: "$x",
+  position: "absolute",
+  bottom: "calc(-2.5 * var(--x))",
+  left: 0,
+  width: "85vw",
 
-  width: "100%",
+  "@3": {
+    bottom: "calc(-1 * var(--x))",
+    // to extent to the parent container and fix 50vw
+    left: "-7.5vw",
+    width: "50vw",
+  },
 
   /* 2rem(32px) @ 20rem(320px) increasing to 3.4375rem(55px) @ 160rem(2560px) */
   fontSize: "clamp(2rem, calc(2rem + ((1vw - 0.2rem) * 1.0268)), 3.4375rem)",
