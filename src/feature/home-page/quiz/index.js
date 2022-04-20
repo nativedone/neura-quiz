@@ -188,7 +188,7 @@ const BaseContainer = styled("div", {
   zIndex: "$50",
 
   width: "85vw",
-  paddingBottom: "$3x", // parent already has x. So, total is 4x
+  paddingBottom: "calc(5.5 * var(--x))",
 
   "@3": {
     width: "50vw",
