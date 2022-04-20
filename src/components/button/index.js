@@ -43,12 +43,4 @@ export const Button = styled("button", {
       },
     },
   },
-
-  "@media (hover: hover) and (pointer: fine)": {
-    "&:hover": {
-      cursor: "pointer",
-      backgroundColor: "white",
-      color: "black",
-    },
-  },
 });
