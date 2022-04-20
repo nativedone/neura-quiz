@@ -17,7 +17,7 @@ const Video = styled("video", {
   transition: "all 1200ms", // 1.2 sec
   
   "&.zoom-out": {
-    transform: "scale(0.5) translateY(-20%)",
+    transform: "scale(0.5) translateY(-27%)",
     // transform: "scale(0.5) translateY(-4%)",
   },
 });
