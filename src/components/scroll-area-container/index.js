@@ -10,6 +10,20 @@ const ScrollArea = styled(ScrollAreaPrimitive.Root, {
   overflow: "hidden",
   margin: "auto",
 
+  variants: {
+    radiusVariant: {
+      none: {
+        borderRadius: "$none",
+      },
+      rounded: {
+        borderRadius: "$2xl",
+      },
+    },
+  },
+  defaultVariants: {
+    radiusVariant: "rounded",
+  },
+
   "@3": {
     width: "35vw",
   },
@@ -64,9 +78,8 @@ const ScrollAreaCorner = styled(ScrollAreaPrimitive.Corner, {
   background: "hsl(0 0% 78.0%)",
 });
 
-
-export const ScrollAreaContainer = ({ children }) => (
-  <ScrollArea type="auto" body-scroll-lock-ignore="true">
+export const ScrollAreaContainer = ({ children, radius }) => (
+  <ScrollArea type="auto" body-scroll-lock-ignore="true" radiusVariant={radius}>
     <ScrollAreaViewport
       css={{ backgroundColor: "transparent" }}
       body-scroll-lock-ignore="true"
