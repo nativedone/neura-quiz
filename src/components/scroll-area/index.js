@@ -4,16 +4,16 @@ import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 const SCROLLBAR_SIZE = 10;
 
 const StyledScrollArea = styled(ScrollAreaPrimitive.Root, {
-  width: '85vw',
-  height: '45vh',
-  maxHeight: '45vh',
+  width: "85vw",
+  height: "45vh",
+  maxHeight: "45vh",
   borderRadius: 4,
   overflow: "hidden",
-  margin: 'auto',
+  margin: "auto",
 
   "@3": {
-    width: '35vw', 
-  }
+    width: "35vw",
+  },
 });
 
 const StyledViewport = styled(ScrollAreaPrimitive.Viewport, {
@@ -29,9 +29,9 @@ const StyledScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
   // disable browser handling of all panning and zooming gestures on touch devices
   touchAction: "none",
   padding: 2,
-//   background: "hsl(0 0% 88.7%)",
+  //   background: "hsl(0 0% 88.7%)",
   background: "transparent",
-//   background: "rgba(0, 0, 0, 0.5)",
+  //   background: "rgba(0, 0, 0, 0.5)",
   transition: "background 160ms ease-out",
   "&:hover": { background: "rgba(0, 0, 0, 0.5)" },
   '&[data-orientation="vertical"]': { width: SCROLLBAR_SIZE },
@@ -39,7 +39,7 @@ const StyledScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
     flexDirection: "column",
     height: SCROLLBAR_SIZE,
   },
-  zIndex: '$50'
+  zIndex: "$50",
 });
 
 const StyledThumb = styled(ScrollAreaPrimitive.Thumb, {
@@ -73,8 +73,11 @@ export const ScrollAreaThumb = StyledThumb;
 export const ScrollAreaCorner = StyledCorner;
 
 export const ScrollAreaDemo = ({ children }) => (
-  <ScrollArea type="auto" body-scroll-lock-ignore>
-    <ScrollAreaViewport css={{ backgroundColor: "transparent" }} body-scroll-lock-ignore>
+  <ScrollArea type="auto" body-scroll-lock-ignore="true">
+    <ScrollAreaViewport
+      css={{ backgroundColor: "transparent" }}
+      body-scroll-lock-ignore="true"
+    >
       {children}
     </ScrollAreaViewport>
     <ScrollAreaScrollbar orientation="vertical">
