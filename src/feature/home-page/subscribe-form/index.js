@@ -140,19 +140,19 @@ export function SubscribeForm({ onSuccess }) {
                 error={errors?.email?.message}
                 placeholder="Email"
               />
-              {/* <Field
-            label="postCode"
-            register={register}
-            validation={{
-              required: "Please provide a valid Postcode",
-              // pattern: {
-              //   value: postCodePattern,
-              //   message: "Please provide a valid Postcode",
-              // },
-            }}
-            error={errors?.postCode?.message}
-            placeholder="Postcode"
-          /> */}
+              <Field
+                label="postCode"
+                register={register}
+                validation={{
+                  required: "Please provide a valid Postcode",
+                  // pattern: {
+                  //   value: postCodePattern,
+                  //   message: "Please provide a valid Postcode",
+                  // },
+                }}
+                error={errors?.postCode?.message}
+                placeholder="Postcode"
+              />
             </Form>
 
             {information}
@@ -205,7 +205,11 @@ const InnerContainer = styled("div", {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  padding: "$x_2",
+  padding: "$x",
+
+  "@3": {
+    padding: "$x_2",
+  }
 });
 
 const SubscribeContainer = styled("div", {
@@ -259,7 +263,7 @@ const Form = styled("form", {
   width: "100%",
   position: "relative",
 
-  paddingBottom: "15px", // TODO: fix me
+  paddingBottom: "$x_8",
 
   "> .field": {
     backgroundColor: "transparent",

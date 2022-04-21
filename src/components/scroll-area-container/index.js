@@ -14,7 +14,26 @@ const ScrollArea = styled(ScrollAreaPrimitive.Root, {
         height: "45vh",
       },
       medium: {
-        height: "80vh",
+        height: "62vh",
+
+        "@1": {
+          height: "67vh",
+        },
+        "@2": {
+          height: "62vh",
+        },
+        "@3": {
+          height: "80vh",
+        },
+        "@6": {
+          height: "65vh",
+        },
+        "@7": {
+          height: "78vh",
+        },
+        "@9": {
+          height: "70vh",
+        },
       },
       large: {
         height: "100vh",
@@ -52,9 +71,7 @@ const ScrollAreaScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
   // disable browser handling of all panning and zooming gestures on touch devices
   touchAction: "none",
   padding: 2,
-  //   background: "hsl(0 0% 88.7%)",
   background: "transparent",
-  //   background: "rgba(0, 0, 0, 0.5)",
   transition: "background 160ms ease-out",
   "&:hover": { background: "rgba(0, 0, 0, 0.5)" },
   '&[data-orientation="vertical"]': { width: SCROLLBAR_SIZE },
