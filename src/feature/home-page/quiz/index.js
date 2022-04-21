@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect } from "react";
 import { styled } from "@theme";
 import { Button } from "@components/button";
 import { Logo } from "@components/logo";
-import { ScrollAreaDemo } from "@components/scroll-area";
+import { ScrollAreaContainer } from "@components/scroll-area-container";
 
 import { data } from "./data";
 
@@ -28,6 +28,12 @@ export function Quiz() {
   }, [currentQuestion]);
 
   if (currentQuestion === data.length) {
+    const lowScoreResultMessage = `We hope you enjoyed learning something new about the brain! If you did, there is still so much more to discover.`;
+    const highScoreResultMessage = `Well done! You clearly take an interest in the brain, which is great because there is still so much more to discover!`;
+
+    const messageBasedOnScore =
+      score <= data.length / 2 ? lowScoreResultMessage : highScoreResultMessage;
+
     return (
       <Container key="result">
         <InnerContainer>
@@ -36,13 +42,13 @@ export function Quiz() {
               {`You got ${score} out of ${data.length} correct!`}
             </span>
 
-            <p className="paragraph">Thank you for taking the quiz.</p>
+            <p className="paragraph">{messageBasedOnScore}</p>
+
             <p className="paragraph">
-              There is so much to learn about the brain!
-            </p>
-            <p className="paragraph">
-              <strong>“We know more about space, than we do the brain.”</strong>
-              <br />– Dr Steve Kassam
+              In fact, did you know that{" "}
+              <strong>
+                we know more about space than we do about the human brain?
+              </strong>
             </p>
             <p className="paragraph">
               Click{" "}
@@ -85,8 +91,8 @@ export function Quiz() {
   return (
     <Container key="partial-result">
       <InnerContainer>
-          <ScrollAreaDemo>
-        <Box className="has-radius">
+        <ScrollAreaContainer>
+          <Box className="has-radius">
             <div>
               <span className="heading">
                 {data[currentQuestion].explanation.title}
@@ -97,8 +103,8 @@ export function Quiz() {
                 </p>
               ))}
             </div>
-        </Box>
-          </ScrollAreaDemo>
+          </Box>
+        </ScrollAreaContainer>
 
         <Navigation>
           <Pagination>

@@ -3,11 +3,10 @@ import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 
 const SCROLLBAR_SIZE = 10;
 
-const StyledScrollArea = styled(ScrollAreaPrimitive.Root, {
+const ScrollArea = styled(ScrollAreaPrimitive.Root, {
   width: "85vw",
   height: "45vh",
   maxHeight: "45vh",
-  borderRadius: 4,
   overflow: "hidden",
   margin: "auto",
 
@@ -16,13 +15,13 @@ const StyledScrollArea = styled(ScrollAreaPrimitive.Root, {
   },
 });
 
-const StyledViewport = styled(ScrollAreaPrimitive.Viewport, {
+const ScrollAreaViewport = styled(ScrollAreaPrimitive.Viewport, {
   width: "100%",
   height: "100%",
   borderRadius: "inherit",
 });
 
-const StyledScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
+const ScrollAreaScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
   display: "flex",
   // ensures no selection
   userSelect: "none",
@@ -42,7 +41,7 @@ const StyledScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
   zIndex: "$50",
 });
 
-const StyledThumb = styled(ScrollAreaPrimitive.Thumb, {
+const ScrollAreaThumb = styled(ScrollAreaPrimitive.Thumb, {
   flex: 1,
   background: "hsl(253 3.5% 53.5%)",
   borderRadius: SCROLLBAR_SIZE,
@@ -61,18 +60,12 @@ const StyledThumb = styled(ScrollAreaPrimitive.Thumb, {
   },
 });
 
-const StyledCorner = styled(ScrollAreaPrimitive.Corner, {
+const ScrollAreaCorner = styled(ScrollAreaPrimitive.Corner, {
   background: "hsl(0 0% 78.0%)",
 });
 
-// Exports
-export const ScrollArea = StyledScrollArea;
-export const ScrollAreaViewport = StyledViewport;
-export const ScrollAreaScrollbar = StyledScrollbar;
-export const ScrollAreaThumb = StyledThumb;
-export const ScrollAreaCorner = StyledCorner;
 
-export const ScrollAreaDemo = ({ children }) => (
+export const ScrollAreaContainer = ({ children }) => (
   <ScrollArea type="auto" body-scroll-lock-ignore="true">
     <ScrollAreaViewport
       css={{ backgroundColor: "transparent" }}
