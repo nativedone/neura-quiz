@@ -3,7 +3,7 @@ import { styled } from "@theme";
 export function BackgroundVideoDesktop() {
   return (
     <Video autoPlay muted loop playsInline>
-      <source src="/assets/video-2000k.mp4" type="video/mp4" />
+      <source src="/assets/video-2000k-no-audio.mp4" type="video/mp4" />
     </Video>
   );
 }
