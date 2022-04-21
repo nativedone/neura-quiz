@@ -37,27 +37,29 @@ export function Quiz() {
     return (
       <Container key="result">
         <InnerContainer>
-          <Box className="has-radius">
-            <span className="heading">
-              {`You got ${score} out of ${data.length} correct!`}
-            </span>
+          <ScrollAreaContainer>
+            <Box className="has-radius">
+              <span className="heading">
+                {`You got ${score} out of ${data.length} correct!`}
+              </span>
 
-            <p className="paragraph">{messageBasedOnScore}</p>
+              <p className="paragraph">{messageBasedOnScore}</p>
 
-            <p className="paragraph">
-              In fact, did you know that{" "}
-              <strong>
-                we know more about space than we do about the human brain?
-              </strong>
-            </p>
-            <p className="paragraph">
-              Click{" "}
-              <a className="external-link" href="#">
-                here
-              </a>{" "}
-              to come on a discovery journey into the brain with NeuRA.
-            </p>
-          </Box>
+              <p className="paragraph">
+                In fact, did you know that{" "}
+                <strong>
+                  we know more about space than we do about the human brain?
+                </strong>
+              </p>
+              <p className="paragraph">
+                Click{" "}
+                <a className="external-link" href="#">
+                  here
+                </a>{" "}
+                to come on a discovery journey into the brain with NeuRA.
+              </p>
+            </Box>
+          </ScrollAreaContainer>
           <Navigation>
             <Logo />
             <Button variant="secondary" onClick={() => {}}>
