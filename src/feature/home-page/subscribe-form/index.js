@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { styled } from "@theme";
 import { emailPattern } from "@utils/validations/email";
 import { Button } from "@components/button";
+import { ScrollAreaContainer } from "@components/scroll-area-container";
 
 export function SubscribeForm({ onSuccess }) {
   const [status, setStatus] = useState("idle");
@@ -87,55 +88,59 @@ export function SubscribeForm({ onSuccess }) {
       className={hasValidationErrors ? "has-validation-errors" : ""}
       style={{ transform: `scale(${scale})` }}
     >
-      <FormContainer>
-        <span className="heading">Fill in your details to start the quiz!</span>
-        <Form aria-label="Subscribe form">
-          <Field
-            label="firstName"
-            register={register}
-            validation={{
-              required: "Please provide a valid first name",
-            }}
-            error={errors?.firstName?.message}
-            placeholder="First Name"
-          />
-          <Field
-            label="lastName"
-            register={register}
-            validation={{
-              required: "Please provide a valid last name",
-            }}
-            error={errors?.lastName?.message}
-            placeholder="Last Name"
-          />
+      <ScrollAreaContainer size="medium">
+        <InnerContainer>
+          <FormContainer>
+            <span className="heading">
+              Fill in your details to start the quiz!
+            </span>
+            <Form aria-label="Subscribe form">
+              <Field
+                label="firstName"
+                register={register}
+                validation={{
+                  required: "Please provide a valid first name",
+                }}
+                error={errors?.firstName?.message}
+                placeholder="First Name"
+              />
+              <Field
+                label="lastName"
+                register={register}
+                validation={{
+                  required: "Please provide a valid last name",
+                }}
+                error={errors?.lastName?.message}
+                placeholder="Last Name"
+              />
 
-          <Field
-            label="mobile" // TODO: change to phone_number
-            register={register}
-            validation={{
-              required: "Please provide a valid mobile number",
-              // pattern: {
-              //   value: mobilePattern,
-              //   message: "Please provide a valid mobile number",
-              // },
-            }}
-            error={errors?.mobile?.message}
-            placeholder="Phone number"
-          />
-          <Field
-            label="email"
-            register={register}
-            validation={{
-              required: "Please provide a valid email",
-              pattern: {
-                value: emailPattern,
-                message: "Please provide a valid email",
-              },
-            }}
-            error={errors?.email?.message}
-            placeholder="Email"
-          />
-          {/* <Field
+              <Field
+                label="mobile" // TODO: change to phone_number
+                register={register}
+                validation={{
+                  required: "Please provide a valid mobile number",
+                  // pattern: {
+                  //   value: mobilePattern,
+                  //   message: "Please provide a valid mobile number",
+                  // },
+                }}
+                error={errors?.mobile?.message}
+                placeholder="Phone number"
+              />
+              <Field
+                label="email"
+                register={register}
+                validation={{
+                  required: "Please provide a valid email",
+                  pattern: {
+                    value: emailPattern,
+                    message: "Please provide a valid email",
+                  },
+                }}
+                error={errors?.email?.message}
+                placeholder="Email"
+              />
+              {/* <Field
             label="postCode"
             register={register}
             validation={{
@@ -148,13 +153,15 @@ export function SubscribeForm({ onSuccess }) {
             error={errors?.postCode?.message}
             placeholder="Postcode"
           /> */}
-        </Form>
+            </Form>
 
-        {information}
-      </FormContainer>
-      <Button variant="secondary" onClick={handleSubmit(onSubmit)}>
-        {status === "loading" ? "PLEASE WAIT..." : "START QUIZ"}
-      </Button>
+            {information}
+          </FormContainer>
+          <Button variant="secondary" onClick={handleSubmit(onSubmit)}>
+            {status === "loading" ? "PLEASE WAIT..." : "START QUIZ"}
+          </Button>
+        </InnerContainer>
+      </ScrollAreaContainer>
     </SubscribeContainer>
   );
 }
@@ -194,12 +201,18 @@ function ApiSuccess() {
   return <ApiSuccessMessage role="alert">THANK YOU!</ApiSuccessMessage>;
 }
 
+const InnerContainer = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  padding: "$x_2",
+});
+
 const SubscribeContainer = styled("div", {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   backgroundColor: "rgba(0, 0, 0, 0.5)",
-  padding: "$x_2",
   borderRadius: "$2xl",
   zIndex: "$50",
   width: "85vw",

@@ -4,13 +4,22 @@ import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 const SCROLLBAR_SIZE = 10;
 
 const ScrollArea = styled(ScrollAreaPrimitive.Root, {
-  width: "85vw",
-  height: "45vh",
-  maxHeight: "45vh",
   overflow: "hidden",
   margin: "auto",
+  width: "85vw",
 
   variants: {
+    sizeVariant: {
+      small: {
+        height: "45vh",
+      },
+      medium: {
+        height: "80vh",
+      },
+      large: {
+        height: "100vh",
+      },
+    },
     radiusVariant: {
       none: {
         borderRadius: "$none",
@@ -21,6 +30,7 @@ const ScrollArea = styled(ScrollAreaPrimitive.Root, {
     },
   },
   defaultVariants: {
+    sizeVariant: "small",
     radiusVariant: "rounded",
   },
 
@@ -78,8 +88,13 @@ const ScrollAreaCorner = styled(ScrollAreaPrimitive.Corner, {
   background: "hsl(0 0% 78.0%)",
 });
 
-export const ScrollAreaContainer = ({ children, radius }) => (
-  <ScrollArea type="auto" body-scroll-lock-ignore="true" radiusVariant={radius}>
+export const ScrollAreaContainer = ({ children, size, radius }) => (
+  <ScrollArea
+    type="auto"
+    body-scroll-lock-ignore="true"
+    sizeVariant={size}
+    radiusVariant={radius}
+  >
     <ScrollAreaViewport
       css={{ backgroundColor: "transparent" }}
       body-scroll-lock-ignore="true"
