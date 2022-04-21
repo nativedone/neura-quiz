@@ -135,7 +135,7 @@ export function SubscribeForm({ onSuccess }) {
             error={errors?.email?.message}
             placeholder="Email"
           />
-          <Field
+          {/* <Field
             label="postCode"
             register={register}
             validation={{
@@ -147,7 +147,7 @@ export function SubscribeForm({ onSuccess }) {
             }}
             error={errors?.postCode?.message}
             placeholder="Postcode"
-          />
+          /> */}
         </Form>
 
         {information}
