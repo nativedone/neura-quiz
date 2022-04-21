@@ -3,6 +3,7 @@ import { useState, useCallback, useEffect } from "react";
 import { styled } from "@theme";
 import { Button } from "@components/button";
 import { Logo } from "@components/logo";
+import { ScrollAreaDemo } from "@components/scroll-area";
 
 import { data } from "./data";
 
@@ -29,33 +30,35 @@ export function Quiz() {
   if (currentQuestion === data.length) {
     return (
       <Container key="result">
-        <Box className="has-radius">
-          <span className="heading">
-            {`You got ${score} out of ${data.length} correct!`}
-          </span>
+        <InnerContainer>
+          <Box className="has-radius">
+            <span className="heading">
+              {`You got ${score} out of ${data.length} correct!`}
+            </span>
 
-          <p className="paragraph">Thank you for taking the quiz.</p>
-          <p className="paragraph">
-            There is so much to learn about the brain!
-          </p>
-          <p className="paragraph">
-            <strong>“We know more about space, than we do the brain.”</strong>
-            <br />– Dr Steve Kassam
-          </p>
-          <p className="paragraph">
-            Click{" "}
-            <a className="external-link" href="#">
-              here
-            </a>{" "}
-            to come on a discovery journey into the brain with NeuRA.
-          </p>
+            <p className="paragraph">Thank you for taking the quiz.</p>
+            <p className="paragraph">
+              There is so much to learn about the brain!
+            </p>
+            <p className="paragraph">
+              <strong>“We know more about space, than we do the brain.”</strong>
+              <br />– Dr Steve Kassam
+            </p>
+            <p className="paragraph">
+              Click{" "}
+              <a className="external-link" href="#">
+                here
+              </a>{" "}
+              to come on a discovery journey into the brain with NeuRA.
+            </p>
+          </Box>
           <Navigation>
             <Logo />
             <Button variant="secondary" onClick={() => {}}>
               DISCOVER MORE
             </Button>
           </Navigation>
-        </Box>
+        </InnerContainer>
       </Container>
     );
   }
@@ -81,15 +84,22 @@ export function Quiz() {
 
   return (
     <Container key="partial-result">
-      <Box className="has-radius">
-        <span className="heading">
-          {data[currentQuestion].explanation.title}
-        </span>
-        {data[currentQuestion].explanation.paragraphs.map((text) => (
-          <p key={text} className="paragraph">
-            {text}
-          </p>
-        ))}
+      <InnerContainer>
+          <ScrollAreaDemo>
+        <Box className="has-radius">
+            <div>
+              <span className="heading">
+                {data[currentQuestion].explanation.title}
+              </span>
+              {data[currentQuestion].explanation.paragraphs.map((text) => (
+                <p key={text} className="paragraph">
+                  {text}
+                </p>
+              ))}
+            </div>
+        </Box>
+          </ScrollAreaDemo>
+
         <Navigation>
           <Pagination>
             {data.map((_, index) => (
@@ -98,17 +108,21 @@ export function Quiz() {
                 className={index <= currentQuestion ? "is-answered" : ""}
               />
             ))}
-            {/* extra */}
-            <span />
           </Pagination>
           <Button variant="secondary" onClick={handleNextClicked}>
-            NEXT
+            {currentQuestion === data.length - 1 ? "SEE RESULTS" : "NEXT"}
           </Button>
         </Navigation>
-      </Box>
+      </InnerContainer>
     </Container>
   );
 }
+
+const InnerContainer = styled("div", {
+  position: "relative",
+
+  // backgroundColor: "red",
+});
 
 const Box = styled("div", {
   display: "flex",
@@ -116,12 +130,12 @@ const Box = styled("div", {
   backgroundColor: "rgba(0, 0, 0, 0.5)",
   padding: "$x",
 
-  position: "relative",
-
   margin: "auto", // TODO: fix for mobile
 
   zIndex: "$50",
   width: "85vw",
+  // maxHeight: "50vh",
+  // overflow: "auto",
 
   "&.has-border": {
     outline: "2px solid white",
@@ -209,8 +223,6 @@ const Navigation = styled("div", {
 
   "@3": {
     bottom: "calc(-1 * var(--x))",
-    // to extent to the parent container and fix 50vw
-    left: "-7.5vw",
     width: "50vw",
   },
 
