@@ -73,16 +73,13 @@ export const ScrollAreaThumb = StyledThumb;
 export const ScrollAreaCorner = StyledCorner;
 
 export const ScrollAreaDemo = ({ children }) => (
-  <ScrollArea type="auto">
-    <ScrollAreaViewport css={{ backgroundColor: "transparent" }}>
+  <ScrollArea type="auto" body-scroll-lock-ignore>
+    <ScrollAreaViewport css={{ backgroundColor: "transparent" }} body-scroll-lock-ignore>
       {children}
     </ScrollAreaViewport>
     <ScrollAreaScrollbar orientation="vertical">
       <ScrollAreaThumb />
     </ScrollAreaScrollbar>
-    {/* <ScrollAreaScrollbar orientation="horizontal">
-      <ScrollAreaThumb />
-    </ScrollAreaScrollbar> */}
     <ScrollAreaCorner />
   </ScrollArea>
 );

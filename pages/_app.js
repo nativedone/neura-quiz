@@ -11,7 +11,17 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   useEffect(() => {
     const targetElement = document.querySelector("body");
-    disableBodyScroll(targetElement);
+    disableBodyScroll(targetElement, {
+      allowTouchMove: el => {
+        while (el && el !== document.body) {
+          if (el.getAttribute('body-scroll-lock-ignore') !== null) {
+            return true;
+          }
+    
+          el = el.parentElement;
+        }
+      },
+    });
     const handleRouteChange = (url) => {
       gtag.pageView(url);
     };
