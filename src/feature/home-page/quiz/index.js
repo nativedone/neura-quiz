@@ -74,18 +74,33 @@ export function Quiz() {
   if (currentAnswerStatus === "idle") {
     return (
       <Container key="question">
-        <Box className="has-border">
-          <p className="question">{data[currentQuestion].question}</p>
-          {data[currentQuestion].options.map((option, index) => (
-            <Button
-              key={`${currentQuestion}__${option.label}`}
-              variant="secondary"
-              onClick={() => handleOptionClicked(index)}
-            >
-              {option.label}
+        <InnerContainer>
+          <Box className="has-border">
+            <p className="question">{data[currentQuestion].question}</p>
+            {data[currentQuestion].options.map((option, index) => (
+              <Button
+                key={`${currentQuestion}__${option.label}`}
+                variant="secondary"
+                onClick={() => handleOptionClicked(index)}
+              >
+                {option.label}
+              </Button>
+            ))}
+          </Box>
+          <Navigation>
+            <Pagination>
+              {data.map((_, index) => (
+                <span
+                  key={`pagination__${index}`}
+                  className={index <= currentQuestion ? "is-answered" : ""}
+                />
+              ))}
+            </Pagination>
+            <Button variant="secondary" hidden>
+              NEXT
             </Button>
-          ))}
-        </Box>
+          </Navigation>
+        </InnerContainer>
       </Container>
     );
   }
@@ -224,6 +239,8 @@ const Navigation = styled("div", {
   display: "flex",
   justifyContent: "space-between",
 
+  backgroundColor: "red",
+
   position: "absolute",
   bottom: "calc(-2.5 * var(--x))",
   left: 0,
@@ -234,8 +251,8 @@ const Navigation = styled("div", {
     width: "50vw",
   },
 
-  /* 2rem(32px) @ 20rem(320px) increasing to 3.4375rem(55px) @ 160rem(2560px) */
-  fontSize: "clamp(2rem, calc(2rem + ((1vw - 0.2rem) * 1.0268)), 3.4375rem)",
+  /* 2rem(32px) @ 20rem(320px) increasing to 5.0625rem(81px) @ 160rem(2560px) */
+  fontSize: "clamp(2rem, calc(2rem + ((1vw - 0.2rem) * 2.1875)), 5.0625rem)",
 
   /* Safari resize fix */
   minHeight: "0vw",
