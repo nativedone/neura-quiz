@@ -25,7 +25,7 @@ import { useEffect, useRef, useState } from "react";
 // });
 
 
-export function BackgroundVideoMobile() {
+export function BackgroundVideoMobile({ hasStarted }) {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export function BackgroundVideoMobile() {
   }, [ videoRef]);
 
   return (
-    <Video muted loop playsInline  ref={videoRef}>
+    <Video muted loop playsInline  ref={videoRef} className={hasStarted ? "zoom-out" : ""}>
       <source
         src="/assets/video-extended-960x2000-500k.mp4"
         type="video/mp4"
