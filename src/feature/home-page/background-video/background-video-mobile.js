@@ -36,7 +36,7 @@ export function BackgroundVideoMobile({ hasStarted }) {
 
   return (
     <Video muted loop playsInline  ref={videoRef} className={hasStarted ? "zoom-out" : ""}>
-      <source src="/assets/video-2000k-no-audio.mp4" type="video/mp4" />
+      <source src="/assets/output-960x2000-500k.mp4" type="video/mp4" />
 
       {/* <source
         src="/assets/video-extended-960x2000-500k.mp4"
@@ -50,13 +50,13 @@ const Video = styled("video", {
   width: "100%",
   height: "100%",
   // transform: "scale(1.8) translateY(20%)", 
-  transform: "scale(1.8) translateY(60%)", 
+  transform: "scale(1.8) translateY(20%)", 
   
-  // transition: "transform 1200ms", // 1.2 sec
+  transition: "transform 1200ms", // 1.2 sec
   
-  // "&.zoom-out": {
-  //   transform: "scale(0.5) translateY(-27%)",
-  // },
+  "&.zoom-out": {
+    transform: "scale(0.5) translateY(-27%)",
+  },
   // position: "absolute",
   // top: 0,
   // bottom: 0,
