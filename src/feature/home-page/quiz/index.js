@@ -239,8 +239,6 @@ const Navigation = styled("div", {
   display: "flex",
   justifyContent: "space-between",
 
-  backgroundColor: "red",
-
   position: "absolute",
   bottom: "calc(-2.5 * var(--x))",
   left: 0,

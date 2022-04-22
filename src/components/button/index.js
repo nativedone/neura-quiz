@@ -43,7 +43,6 @@ export const Button = styled("button", {
     hidden: {
       true: {
         visibility: "hidden",
-        backgroundColor: "red",
       },
     },
   },
