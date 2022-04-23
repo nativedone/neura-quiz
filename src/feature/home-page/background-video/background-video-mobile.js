@@ -43,7 +43,8 @@ export function BackgroundVideoMobile({ hasStarted }) {
       ref={videoRef}
       className={hasStarted ? "zoom-out" : ""}
     >
-      <source src="/assets/output-youtube.mp4" type="video/mp4" />
+      <source src="/assets/922×1920.mp4" type="video/mp4" />
+      {/* <source src="/assets/output-youtube.mp4" type="video/mp4" /> */}
       {/* <source src="/assets/output-960x2000-500k.mp4" type="video/mp4" /> */}
 
       {/* <source
