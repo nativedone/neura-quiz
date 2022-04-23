@@ -1,10 +1,31 @@
 import Link from "next/link";
+import Router, { useRouter } from "next/router";
 
 import { styled } from "@theme";
 
 export function LogoMenuLink() {
+  const route = useRouter();
+
+  const { restart } = route.query;
+
   return (
-    <Link href="/" passHref>
+    <div
+      onClick={() =>
+        Router.push(
+          {
+            query: { restart: restart ? parseInt(restart, 10) + 1 : 1 },
+          },
+          undefined,
+          // shallow avoids double re-render
+          { scroll: false, shallow: true }
+        )
+      }
+    >
+      <LogoHome>Quiz</LogoHome>
+    </div>
+  );
+  return (
+    <Link href="/" passHref replace={true} shallow={true}>
       <LogoHome>Quiz</LogoHome>
     </Link>
   );
