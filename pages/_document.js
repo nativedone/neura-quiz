@@ -10,15 +10,15 @@ class MyDocument extends Document {
             id="stitches"
             dangerouslySetInnerHTML={{ __html: getCssText() }}
           />
-          {/* <link
+          <link
             rel="preload"
             as="font"
             type="font/woff2"
-            href="/fonts/myriad-pro-bold-condensed-700.woff2"
+            href="/fonts/neo-sans-regular-400.woff2"
             crossOrigin=""
-          /> */}
+          />
 
-          <link rel="stylesheet" href="https://use.typekit.net/awf4vkd.css" />
+          <link rel="preload" as="video" href="/assets/922×1920.mp4" />
         </Head>
         <body>
           <Main />
