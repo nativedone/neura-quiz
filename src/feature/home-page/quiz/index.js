@@ -110,7 +110,6 @@ export function Quiz() {
       <InnerContainer>
         <ScrollAreaContainer>
           <Box className="has-radius">
-            <div>
               <span className="heading">
                 {data[currentQuestion].explanation.title}
               </span>
@@ -119,7 +118,6 @@ export function Quiz() {
                   {text}
                 </p>
               ))}
-            </div>
           </Box>
         </ScrollAreaContainer>
 
@@ -153,7 +151,7 @@ const Box = styled("div", {
   backgroundColor: "rgba(0, 0, 0, 0.5)",
   padding: "$x",
 
-  margin: "auto", // TODO: fix for mobile
+  margin: "0 auto",
 
   zIndex: "$50",
   width: "85vw",
@@ -216,9 +214,6 @@ export function Container({ children }) {
 }
 
 const BaseContainer = styled("div", {
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
 
   // backgroundColor: "green",
 
@@ -239,13 +234,10 @@ const Navigation = styled("div", {
   display: "flex",
   justifyContent: "space-between",
 
-  position: "absolute",
-  bottom: "calc(-2.5 * var(--x))",
-  left: 0,
   width: "85vw",
+  paddingTop: "$x_2",
 
   "@3": {
-    bottom: "calc(-1 * var(--x))",
     width: "50vw",
   },
 

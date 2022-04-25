@@ -74,9 +74,6 @@ const BodyContainer = styled("div", {
   "&.idle": {
     alignItems: "center",
   },
-  "@3": {
-    alignItems: "center",
-  },
 });
 
 const ButtonContainer = styled("div", {
