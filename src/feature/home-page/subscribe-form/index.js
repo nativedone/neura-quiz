@@ -260,6 +260,7 @@ const FormContainer = styled("div", {
     fontWeight: "$normal",
     lineHeight: "$tight",
     color: "white",
+    paddingTop: "0.5em",
     paddingBottom: "$x_2",
   },
 });
