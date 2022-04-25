@@ -1,9 +1,18 @@
+import { useEffect, useState } from "react";
 import { styled } from "@theme";
 
 export function BackgroundVideoDesktop() {
+  const [source, setSource] = useState("");
+
+  useEffect(() => {
+    if (window.innerWidth > 576) {
+      setSource("/assets/video-2000k-no-audio.mp4");
+    }
+  }, []);
+
   return (
-    <Video autoPlay muted loop playsInline>
-      <source src="/assets/video-2000k-no-audio.mp4" type="video/mp4" />
+    <Video key={source} autoPlay muted loop playsInline>
+      <source src={source} type="video/mp4" />
     </Video>
   );
 }
