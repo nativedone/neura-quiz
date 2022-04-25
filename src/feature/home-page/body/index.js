@@ -1,7 +1,9 @@
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+
 import { styled } from "@theme";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { Button } from "@components/button";
 
@@ -22,6 +24,18 @@ const Quiz = dynamic(() => import("../quiz").then((mod) => mod.Quiz));
 
 export function Body() {
   const [state, setState] = useState("idle");
+
+  const route = useRouter();
+  const { restart } = route.query;
+
+  useEffect(() => {
+    if (!restart) {
+      return;
+    }
+
+    setState("idle")
+  }, [restart]);
+
   return (
     <BodyContainer className={state}>
       {state === "idle" && (
@@ -58,9 +72,6 @@ const BodyContainer = styled("div", {
 
   alignItems: "flex-end",
   "&.idle": {
-    alignItems: "center",
-  },
-  "@3": {
     alignItems: "center",
   },
 });

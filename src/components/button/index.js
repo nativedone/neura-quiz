@@ -1,7 +1,6 @@
 import { styled } from "@theme";
 
 export const Button = styled("button", {
-  
   paddingTop: "$x_4",
   paddingBottom: "$x_4",
   paddingLeft: "$x_2",
@@ -15,7 +14,7 @@ export const Button = styled("button", {
     paddingLeft: "$x_4",
     paddingRight: "$x_4",
   },
-  color: 'white',
+  color: "white",
   backgroundColor: "rgba(0, 0, 0, 0.7)",
   fontSize: "$3",
   "@media (hover: hover) and (pointer: fine)": {
@@ -30,7 +29,6 @@ export const Button = styled("button", {
     borderTop: "none",
   },
 
-
   variants: {
     variant: {
       primary: {
@@ -40,6 +38,11 @@ export const Button = styled("button", {
       secondary: {
         fontSize: "$0",
         backgroundColor: "transparent",
+      },
+    },
+    hidden: {
+      true: {
+        visibility: "hidden",
       },
     },
   },

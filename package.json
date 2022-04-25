@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@builder.io/partytown": "^0.5.1",
+    "@radix-ui/react-scroll-area": "^0.1.4",
     "@stitches/react": "^1.2.7",
     "body-scroll-lock": "^4.0.0-beta.0",
     "framer-motion": "^6.2.8",

@@ -3,6 +3,7 @@ import { useState, useCallback, useEffect } from "react";
 import { styled } from "@theme";
 import { Button } from "@components/button";
 import { Logo } from "@components/logo";
+import { ScrollAreaContainer } from "@components/scroll-area-container";
 
 import { data } from "./data";
 
@@ -27,35 +28,45 @@ export function Quiz() {
   }, [currentQuestion]);
 
   if (currentQuestion === data.length) {
+    const lowScoreResultMessage = `We hope you enjoyed learning something new about the brain! If you did, there is still so much more to discover.`;
+    const highScoreResultMessage = `Well done! You clearly take an interest in the brain, which is great because there is still so much more to discover!`;
+
+    const messageBasedOnScore =
+      score <= data.length / 2 ? lowScoreResultMessage : highScoreResultMessage;
+
     return (
       <Container key="result">
-        <Box className="has-radius">
-          <span className="heading">
-            {`You got ${score} out of ${data.length} correct!`}
-          </span>
+        <InnerContainer>
+          <ScrollAreaContainer>
+            <Box className="has-radius">
+              <span className="heading">
+                {`You got ${score} out of ${data.length} correct!`}
+              </span>
 
-          <p className="paragraph">Thank you for taking the quiz.</p>
-          <p className="paragraph">
-            There is so much to learn about the brain!
-          </p>
-          <p className="paragraph">
-            <strong>“We know more about space, than we do the brain.”</strong>
-            <br />– Dr Steve Kassam
-          </p>
-          <p className="paragraph">
-            Click{" "}
-            <a className="external-link" href="#">
-              here
-            </a>{" "}
-            to come on a discovery journey into the brain with NeuRA.
-          </p>
+              <p className="paragraph">{messageBasedOnScore}</p>
+
+              <p className="paragraph">
+                In fact, did you know that{" "}
+                <strong>
+                  we know more about space than we do about the human brain?
+                </strong>
+              </p>
+              <p className="paragraph">
+                Click{" "}
+                <a className="external-link" href="#">
+                  here
+                </a>{" "}
+                to come on a discovery journey into the brain with NeuRA.
+              </p>
+            </Box>
+          </ScrollAreaContainer>
           <Navigation>
             <Logo />
             <Button variant="secondary" onClick={() => {}}>
               DISCOVER MORE
             </Button>
           </Navigation>
-        </Box>
+        </InnerContainer>
       </Container>
     );
   }
@@ -63,33 +74,53 @@ export function Quiz() {
   if (currentAnswerStatus === "idle") {
     return (
       <Container key="question">
-        <Box className="has-border">
-          <p className="question">{data[currentQuestion].question}</p>
-          {data[currentQuestion].options.map((option, index) => (
-            <Button
-              key={`${currentQuestion}__${option.label}`}
-              variant="secondary"
-              onClick={() => handleOptionClicked(index)}
-            >
-              {option.label}
+        <InnerContainer>
+          <Box className="has-border">
+            <p className="question">{data[currentQuestion].question}</p>
+            {data[currentQuestion].options.map((option, index) => (
+              <Button
+                key={`${currentQuestion}__${option.label}`}
+                variant="secondary"
+                onClick={() => handleOptionClicked(index)}
+              >
+                {option.label}
+              </Button>
+            ))}
+          </Box>
+          <Navigation>
+            <Pagination>
+              {data.map((_, index) => (
+                <span
+                  key={`pagination__${index}`}
+                  className={index <= currentQuestion ? "is-answered" : ""}
+                />
+              ))}
+            </Pagination>
+            <Button variant="secondary" hidden>
+              NEXT
             </Button>
-          ))}
-        </Box>
+          </Navigation>
+        </InnerContainer>
       </Container>
     );
   }
 
   return (
     <Container key="partial-result">
-      <Box className="has-radius">
-        <span className="heading">
-          {data[currentQuestion].explanation.title}
-        </span>
-        {data[currentQuestion].explanation.paragraphs.map((text) => (
-          <p key={text} className="paragraph">
-            {text}
-          </p>
-        ))}
+      <InnerContainer>
+        <ScrollAreaContainer>
+          <Box className="has-radius">
+              <span className="heading">
+                {data[currentQuestion].explanation.title}
+              </span>
+              {data[currentQuestion].explanation.paragraphs.map((text) => (
+                <p key={text} className="paragraph">
+                  {text}
+                </p>
+              ))}
+          </Box>
+        </ScrollAreaContainer>
+
         <Navigation>
           <Pagination>
             {data.map((_, index) => (
@@ -98,17 +129,21 @@ export function Quiz() {
                 className={index <= currentQuestion ? "is-answered" : ""}
               />
             ))}
-            {/* extra */}
-            <span />
           </Pagination>
           <Button variant="secondary" onClick={handleNextClicked}>
-            NEXT
+            {currentQuestion === data.length - 1 ? "SEE RESULTS" : "NEXT"}
           </Button>
         </Navigation>
-      </Box>
+      </InnerContainer>
     </Container>
   );
 }
+
+const InnerContainer = styled("div", {
+  position: "relative",
+
+  // backgroundColor: "red",
+});
 
 const Box = styled("div", {
   display: "flex",
@@ -116,12 +151,12 @@ const Box = styled("div", {
   backgroundColor: "rgba(0, 0, 0, 0.5)",
   padding: "$x",
 
-  position: "relative",
-
-  margin: "auto", // TODO: fix for mobile
+  margin: "0 auto",
 
   zIndex: "$50",
   width: "85vw",
+  // maxHeight: "50vh",
+  // overflow: "auto",
 
   "&.has-border": {
     outline: "2px solid white",
@@ -179,9 +214,6 @@ export function Container({ children }) {
 }
 
 const BaseContainer = styled("div", {
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
 
   // backgroundColor: "green",
 
@@ -202,20 +234,15 @@ const Navigation = styled("div", {
   display: "flex",
   justifyContent: "space-between",
 
-  position: "absolute",
-  bottom: "calc(-2.5 * var(--x))",
-  left: 0,
   width: "85vw",
+  paddingTop: "$x_2",
 
   "@3": {
-    bottom: "calc(-1 * var(--x))",
-    // to extent to the parent container and fix 50vw
-    left: "-7.5vw",
     width: "50vw",
   },
 
-  /* 2rem(32px) @ 20rem(320px) increasing to 3.4375rem(55px) @ 160rem(2560px) */
-  fontSize: "clamp(2rem, calc(2rem + ((1vw - 0.2rem) * 1.0268)), 3.4375rem)",
+  /* 2rem(32px) @ 20rem(320px) increasing to 5.0625rem(81px) @ 160rem(2560px) */
+  fontSize: "clamp(2rem, calc(2rem + ((1vw - 0.2rem) * 2.1875)), 5.0625rem)",
 
   /* Safari resize fix */
   minHeight: "0vw",
