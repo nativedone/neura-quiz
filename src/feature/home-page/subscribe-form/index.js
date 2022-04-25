@@ -8,10 +8,10 @@ import { ScrollAreaContainer } from "@components/scroll-area-container";
 
 export function SubscribeForm({ onSuccess }) {
   const [status, setStatus] = useState("idle");
-  const [scale, setScale] = useState(0);
+  const [hasMounted, setMountedStatus] = useState(0);
 
   useEffect(() => {
-    setScale(1);
+    setMountedStatus(1);
   }, []);
 
   const {
@@ -82,12 +82,13 @@ export function SubscribeForm({ onSuccess }) {
   }
 
   const hasValidationErrors = Object.values(errors).length > 0;
+  const validationErrorsClassName = hasValidationErrors
+    ? "has-validation-errors"
+    : "";
+  const onMountClassName = hasMounted ? "has-mounted" : "";
 
   return (
-    <SubscribeContainer
-      className={hasValidationErrors ? "has-validation-errors" : ""}
-      style={{ transform: `scale(${scale})` }}
-    >
+    <SubscribeContainer className={`${validationErrorsClassName} ${onMountClassName}`}>
       <ScrollAreaContainer size="medium">
         <InnerContainer>
           <FormContainer>
@@ -209,7 +210,7 @@ const InnerContainer = styled("div", {
 
   "@3": {
     padding: "$x_2",
-  }
+  },
 });
 
 const SubscribeContainer = styled("div", {
@@ -231,7 +232,13 @@ const SubscribeContainer = styled("div", {
     backgroundColor: "rgb(0, 0, 0)",
   },
 
-  transition: "transform 1000ms ease-in",
+  transform: "translate3d(0, 100vh, 0)",
+  willChange: "transform",
+  transition: "transform 800ms ease-in",
+
+  "&.has-mounted": {
+    transform: "translate3d(0, 0, 0)",
+  },
 });
 
 const FormContainer = styled("div", {

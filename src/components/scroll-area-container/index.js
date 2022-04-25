@@ -1,7 +1,7 @@
 import { styled } from "@theme";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 
-const SCROLLBAR_SIZE = 10;
+const SCROLLBAR_SIZE = 8;
 
 const ScrollArea = styled(ScrollAreaPrimitive.Root, {
   overflow: "hidden",
