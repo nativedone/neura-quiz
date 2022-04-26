@@ -1,17 +1,17 @@
 import Head from "next/head";
 
 export function SEO({
-  title = "Take the Quiz",
-  description = "An ambulance pulls up in front of our hospital in Kenema, Sierra Leone. A mother gets out. She is holding a bundle in her arms with one leg hanging down limply.",
+  title = "The brain quiz",
+  description = "Ready for a challenge? Let's see what you know about the brain!",
   author = {
-    name: "Médecins Sans Frontières/Doctors without Borders news, opinion & stories",
-    twitter: "@MSFAustralia",
+    name: "NeuRA: Discover. Conquer. Cure.",
+    twitter: "@neuraustralia",
   },
   image = {
-    url: "/assets/21-MSF_OpenGraph_1200x630_FINAL.jpeg",
-    alt: "Banner for changeand.co, featuring our tagline 'Do good. Better.'",
+    url: "/assets/open-graph-image.jpg",
+    alt: "Banner for quiz.neura.edu.au",
   },
-  websiteUrl = "https://stories.msf.org.au/",
+  websiteUrl = "https://quiz.neura.edu.au/",
   meta = [],
 }) {
   const metaData = [
@@ -101,7 +101,7 @@ export function SEO({
         href="/favicon-16x16.png"
       />
       <link rel="manifest" href="/site.webmanifest" />
-      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ee0000" />
+      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="theme-color" content="#000000" />
     </Head>
