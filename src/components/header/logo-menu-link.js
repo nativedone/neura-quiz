@@ -1,7 +1,7 @@
-import Link from "next/link";
 import Router, { useRouter } from "next/router";
 
 import { styled } from "@theme";
+import { VisuallyHidden } from "@components/visually-hidden";
 
 export function LogoMenuLink() {
   const route = useRouter();
@@ -21,17 +21,15 @@ export function LogoMenuLink() {
         )
       }
     >
-      <LogoHome>Quiz</LogoHome>
+      <LogoHome>
+        Quiz
+        <VisuallyHidden>Take the brain quiz</VisuallyHidden>
+      </LogoHome>
     </div>
-  );
-  return (
-    <Link href="/" passHref replace={true} shallow={true}>
-      <LogoHome>Quiz</LogoHome>
-    </Link>
   );
 }
 
-const LogoHome = styled("a", {
+const LogoHome = styled("div", {
   display: "flex",
 
   color: "white",
