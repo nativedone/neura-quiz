@@ -67,9 +67,7 @@ export function SubscribeForm({ onSuccess }) {
 
   let information = (
     <p className="description">
-      MAX 30 WORDS in this quiz, I agree TBC ribusa ducipid isimpori autemos
-      truptus. Ersperum rectium endelest, excepratur, nectota epudigni
-      comnimuscim aut voluptatur acillit, ut omnis mi, que voloribus volupicab
+      By signing, you may receive communications about how you can help NeuRA find cures for diseases and disability of the brain and nervous system, on the understanding you agree to our Privacy policy / Terms and conditions.
     </p>
   );
 

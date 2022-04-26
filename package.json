@@ -1,5 +1,5 @@
 {
-  "name": "msf-stories-landing-pages",
+  "name": "neura-quiz",
   "private": true,
   "scripts": {
     "dev": "next -p 33",
@@ -12,15 +12,12 @@
     "@radix-ui/react-scroll-area": "^0.1.4",
     "@stitches/react": "^1.2.7",
     "body-scroll-lock": "^4.0.0-beta.0",
-    "framer-motion": "^6.2.8",
     "next": "^12.1.2",
     "node-fetch": "^3.2.3",
     "normalize.css": "^8.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-hook-form": "^7.22.2",
-    "react-use": "^17.3.2",
-    "swiper": "^8.0.7"
+    "react-hook-form": "^7.22.2"
   },
   "devDependencies": {
     "eslint": "^8.11.0",

@@ -5,9 +5,9 @@ export function Share() {
     navigator
       .share(
         {
-          title: "Take this quiz", // 20 characters max
+          title: "The brain quiz.", // 20 characters max
           text: "Ready for a challenge? Let's see what you know about the brain...", // 70 characters max
-          url: location.href,
+          url: location.href?.replace(location.search, ""), // for this app we don't want they sharing url with ?restart=3
         },
         {
           // change this configurations to hide specific unnecessary icons
