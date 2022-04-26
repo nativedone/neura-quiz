@@ -6,7 +6,7 @@ export function BackgroundVideoDesktop() {
 
   useEffect(() => {
     if (window.innerWidth > 576) {
-      setSource("/assets/video-2000k-no-audio.mp4#t=2");
+      setSource("/assets/video-desktop-2000k-no-audio.mp4#t=2");
     }
   }, []);
 
