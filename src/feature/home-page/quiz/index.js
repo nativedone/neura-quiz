@@ -220,7 +220,7 @@ const BaseContainer = styled("div", {
   zIndex: "$50",
 
   width: "85vw",
-  paddingBottom: "calc(5.5 * var(--x))",
+  paddingBottom: "calc(3 * var(--x))",
 
   "@3": {
     width: "50vw",
@@ -235,10 +235,11 @@ const Navigation = styled("div", {
   justifyContent: "space-between",
 
   width: "85vw",
-  paddingTop: "$x_2",
+  paddingTop: "$x",
 
   "@3": {
     width: "50vw",
+    paddingTop: "$x_2",
   },
 
   /* 2rem(32px) @ 20rem(320px) increasing to 5.0625rem(81px) @ 160rem(2560px) */
