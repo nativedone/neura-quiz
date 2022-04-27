@@ -67,16 +67,31 @@ export function SubscribeForm({ onSuccess }) {
 
   let information = (
     <p className="description">
-      By signing, you may receive communications about how you can help NeuRA find cures for diseases and disability of the brain and nervous system, on the understanding you agree to our Privacy policy / Terms and conditions.
+      By signing, you may receive communications about how you can help NeuRA
+      find cures for diseases and disability of the brain and nervous system, on
+      the understanding you agree to our{" "}
+      <a
+        href="https://www.neura.edu.au/privacy/"
+        target="_blank"
+        rel="noreferrer"
+        style={{ fontStyle: "italic" }}
+      >
+        Privacy policy
+      </a>
+      <a
+        href="https://www.neura.edu.au/disclaimer/"
+        target="_blank"
+        rel="noreferrer"
+        style={{ fontStyle: "italic" }}
+      >
+        {" "}/ Terms and conditions
+      </a>
+      .
     </p>
   );
 
   if (status === "error") {
     information = <ApiError />;
-  }
-
-  if (status === "success") {
-    // TODO: call state updater in order to send user to start the quiz
   }
 
   const hasValidationErrors = Object.values(errors).length > 0;
@@ -86,7 +101,9 @@ export function SubscribeForm({ onSuccess }) {
   const onMountClassName = hasMounted ? "has-mounted" : "";
 
   return (
-    <SubscribeContainer className={`${validationErrorsClassName} ${onMountClassName}`}>
+    <SubscribeContainer
+      className={`${validationErrorsClassName} ${onMountClassName}`}
+    >
       <ScrollAreaContainer size="medium">
         <InnerContainer>
           <FormContainer>
