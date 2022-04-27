@@ -5,6 +5,8 @@ import { styled } from "@theme";
 
 import { useState, useEffect } from "react";
 
+import * as gtag from "@lib/gtm";
+
 import { Button } from "@components/button";
 
 const BackgroundVideo = dynamic(() =>
@@ -29,11 +31,33 @@ export function Body() {
   const { restart } = route.query;
 
   useEffect(() => {
+    if (state === "idle") {
+      return;
+    }
+
+    let trackingStep = {
+      category: "Buttons",
+      action: "Click",
+      label: "Clicked Take The Quiz button",
+    };
+
+    if (state === "answering") {
+      trackingStep = {
+        category: "Forms",
+        action: "Submit",
+        label: "Submitted the form to start the quiz",
+      };
+    }
+
+    gtag.event(trackingStep);
+  }, [state]);
+
+  useEffect(() => {
     if (!restart) {
       return;
     }
 
-    setState("idle")
+    setState("idle");
   }, [restart]);
 
   return (

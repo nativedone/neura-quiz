@@ -28,6 +28,7 @@ export function SubscribeForm({ onSuccess }) {
     }
 
     const { email, firstName, lastName, mobile, postCode } = values;
+    const searchParams = new URLSearchParams(location.search);
 
     setStatus("loading");
 
@@ -44,6 +45,10 @@ export function SubscribeForm({ onSuccess }) {
         lastName,
         postCode,
         mobile,
+
+        // utm_sources from facebook
+        adsetid: searchParams.get("adsetid") || "",
+        adid: searchParams.get("adid") || "",
       }),
     })
       .then((response) => response.json())
@@ -84,7 +89,8 @@ export function SubscribeForm({ onSuccess }) {
         rel="noreferrer"
         style={{ fontStyle: "italic" }}
       >
-        {" "}/ Terms and conditions
+        {" "}
+        / Terms and conditions
       </a>
       .
     </p>
