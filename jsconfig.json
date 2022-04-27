@@ -7,7 +7,8 @@
         "@theme": ["src/theme"],
         "@utils/*": ["src/utils/*"],
         "@lib/*": ["lib/*"],
-        "@styles/*": ["styles/*"]
+        "@styles/*": ["styles/*"],
+        "@hooks/*": ["src/hooks/*"]
       }
     }
   }

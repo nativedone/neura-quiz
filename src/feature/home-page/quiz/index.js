@@ -4,6 +4,7 @@ import { styled } from "@theme";
 import { Button } from "@components/button";
 import { Logo } from "@components/logo";
 import { ScrollAreaContainer } from "@components/scroll-area-container";
+import * as gtag from "@lib/gtm";
 
 import { data } from "./data";
 
@@ -11,6 +12,29 @@ export function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentAnswerStatus, setCurrentAnswerStatus] = useState("idle"); // correct or wrong
   const [score, setScore] = useState(0);
+
+  useEffect(() => {
+    if (currentQuestion === 0) {
+      return;
+    }
+
+    let trackingStep = {
+      category: "Questions",
+      action: "Answered",
+      label: `Answered question # ${currentQuestion}`,
+    };
+
+    if (currentQuestion === data.length) {
+      trackingStep = {
+        category: "Completion",
+        action: "Completed",
+        label: "Completed the quiz",
+      };
+    }
+
+    gtag.event(trackingStep);
+  }, [currentQuestion]);
+
 
   const handleOptionClicked = useCallback(
     (index) => {
@@ -110,14 +134,14 @@ export function Quiz() {
       <InnerContainer>
         <ScrollAreaContainer>
           <Box className="has-radius">
-              <span className="heading">
-                {data[currentQuestion].explanation.title}
-              </span>
-              {data[currentQuestion].explanation.paragraphs.map((text) => (
-                <p key={text} className="paragraph">
-                  {text}
-                </p>
-              ))}
+            <span className="heading">
+              {data[currentQuestion].explanation.title}
+            </span>
+            {data[currentQuestion].explanation.paragraphs.map((text) => (
+              <p key={text} className="paragraph">
+                {text}
+              </p>
+            ))}
           </Box>
         </ScrollAreaContainer>
 
@@ -214,7 +238,6 @@ export function Container({ children }) {
 }
 
 const BaseContainer = styled("div", {
-
   // backgroundColor: "green",
 
   zIndex: "$50",
