@@ -1,14 +1,12 @@
-import { useEffect, useState } from "react";
 import { styled } from "@theme";
+import { useSources } from "@hooks/use-sources";
 
 export function BackgroundVideoDesktop() {
-  const [source, setSource] = useState("");
-
-  useEffect(() => {
-    if (window.innerWidth > 576) {
-      setSource("/assets/video-desktop-2000k-no-audio.mp4#t=2");
-    }
-  }, []);
+  const source = useSources({
+    mediaQueryType: "landscape",
+    matchingSuccessData: "/assets/video-desktop-2000k-no-audio.mp4#t=2",
+    matchingFailData: "", // we don't let the browser to download the desktop video if user is on mobile
+  });
 
   return (
     <Video key={source} autoPlay muted loop playsInline>
