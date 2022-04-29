@@ -76,19 +76,12 @@ export function SubscribeForm({ onSuccess }) {
       find cures for diseases and disability of the brain and nervous system, on
       the understanding you agree to our{" "}
       <a
-        href="https://www.neura.edu.au/privacy/"
+        href="https://foundation.neura.edu.au/privacy/"
         target="_blank"
         rel="noreferrer"
         style={{ fontStyle: "italic" }}
       >
         Privacy policy
-      </a>
-      <a
-        href="https://www.neura.edu.au/disclaimer/"
-        target="_blank"
-        rel="noreferrer"
-        style={{ fontStyle: "italic" }}
-      >
         {" "}
         / Terms and conditions
       </a>
