@@ -35,7 +35,6 @@ export function Quiz() {
     gtag.event(trackingStep);
   }, [currentQuestion]);
 
-
   const handleOptionClicked = useCallback(
     (index) => {
       const isCorrect = data[currentQuestion].options[index].isCorrect;
@@ -77,7 +76,12 @@ export function Quiz() {
               </p>
               <p className="paragraph">
                 Click{" "}
-                <a className="external-link" href="#">
+                <a
+                  className="external-link"
+                  href="https://discovery.neura.edu.au/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   here
                 </a>{" "}
                 to come on a discovery journey into the brain with NeuRA.
@@ -86,7 +90,13 @@ export function Quiz() {
           </ScrollAreaContainer>
           <Navigation>
             <Logo />
-            <Button variant="secondary" onClick={() => {}}>
+            <Button
+              as="a"
+              variant="secondary"
+              href="https://discovery.neura.edu.au/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               DISCOVER MORE
             </Button>
           </Navigation>
