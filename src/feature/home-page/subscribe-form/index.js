@@ -27,15 +27,10 @@ export function SubscribeForm({ onSuccess }) {
       return;
     }
 
-    const { email, firstName, lastName, mobile, postCode } = values;
+    const { email, firstName, lastName, phoneNumber, postCode } = values;
     const searchParams = new URLSearchParams(location.search);
 
     setStatus("loading");
-
-    setStatus("success");
-    onSuccess();
-
-    return;
 
     fetch(process.env.NEXT_PUBLIC_SUBSCRIBE_URL, {
       method: "POST",
@@ -44,11 +39,11 @@ export function SubscribeForm({ onSuccess }) {
         firstName,
         lastName,
         postCode,
-        mobile,
+        phoneNumber,
 
         // utm_sources from facebook
-        adsetid: searchParams.get("adsetid") || "",
-        adid: searchParams.get("adid") || "",
+        utm_adsetid: searchParams.get("utm_adsetid") || "null",
+        utm_adid: searchParams.get("utm_adid") || "null",
       }),
     })
       .then((response) => response.json())
@@ -130,16 +125,16 @@ export function SubscribeForm({ onSuccess }) {
               />
 
               <Field
-                label="mobile" // TODO: change to phone_number
+                label="phoneNumber"
                 register={register}
                 validation={{
-                  required: "Please provide a valid mobile number",
+                  required: "Please provide a valid phone number",
                   // pattern: {
                   //   value: mobilePattern,
-                  //   message: "Please provide a valid mobile number",
+                  //   message: "Please provide a valid phone number",
                   // },
                 }}
-                error={errors?.mobile?.message}
+                error={errors?.phoneNumber?.message}
                 placeholder="Phone number"
               />
               <Field

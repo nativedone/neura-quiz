@@ -4,7 +4,8 @@ import { useSources } from "@hooks/use-sources";
 export function BackgroundVideoDesktop() {
   const source = useSources({
     mediaQueryType: "landscape",
-    matchingSuccessData: "/assets/video-desktop-2000k-no-audio.mp4#t=2",
+    // matchingSuccessData: "/assets/video-desktop-2000k-no-audio.mp4#t=2",
+    matchingSuccessData: "/assets/output-1920x1800-3000k -noaudio.mp4#t=2",
     matchingFailData: "", // we don't let the browser to download the desktop video if user is on mobile
   });
 
@@ -25,4 +26,5 @@ const Video = styled("video", {
   margin: "auto",
   minHeight: "50%",
   minWidth: "50%",
+  // transform: 'scale(0.8)'
 });
