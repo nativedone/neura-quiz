@@ -78,7 +78,7 @@ export function Quiz() {
                 Click{" "}
                 <a
                   className="external-link"
-                  href="https://discovery.neura.edu.au/"
+                  href="https://neura-discovery.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -93,7 +93,7 @@ export function Quiz() {
             <Button
               as="a"
               variant="secondary"
-              href="https://discovery.neura.edu.au/"
+              href="https://neura-discovery.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
             >
