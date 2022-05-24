@@ -76,9 +76,7 @@ export function SubscribeForm({ onSuccess }) {
         rel="noreferrer"
         style={{ fontStyle: "italic" }}
       >
-        Privacy policy
-        {" "}
-        / Terms and conditions
+        Privacy policy / Terms and conditions
       </a>
       .
     </p>
@@ -226,7 +224,7 @@ const SubscribeContainer = styled("div", {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  backgroundColor: "rgba(0, 0, 0, 0.7)",
   borderRadius: "$2xl",
   zIndex: "$50",
   width: "85vw",

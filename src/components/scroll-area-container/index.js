@@ -73,7 +73,7 @@ const ScrollAreaScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
   padding: 2,
   background: "transparent",
   transition: "background 160ms ease-out",
-  "&:hover": { background: "rgba(0, 0, 0, 0.5)" },
+  "&:hover": { background: "rgba(0, 0, 0, 0.7)" },
   '&[data-orientation="vertical"]': { width: SCROLLBAR_SIZE },
   '&[data-orientation="horizontal"]': {
     flexDirection: "column",
