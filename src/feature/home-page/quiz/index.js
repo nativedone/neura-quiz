@@ -182,7 +182,7 @@ const InnerContainer = styled("div", {
 const Box = styled("div", {
   display: "flex",
   flexDirection: "column",
-  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  backgroundColor: "rgba(0, 0, 0, 0.7)",
   padding: "$x",
 
   margin: "0 auto",
