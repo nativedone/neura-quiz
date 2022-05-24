@@ -286,10 +286,19 @@ const Pagination = styled("div", {
   display: "flex",
   alignItems: "center",
 
+  /* 0.65625rem(10.5px) @ 20rem(320px) increasing to 1.3125rem(21px) @ 160rem(2560px) */
+  "--size": "clamp(0.65625rem, calc(0.65625rem + ((1vw - 0.2rem) * 0.4688)), 1.3125rem)",
+
+  /* 0.225rem(3.6px) @ 20rem(320px) increasing to 0.3375rem(5.4px) @ 160rem(2560px) */
+  "--space-between-circles": "clamp(0.225rem, calc(0.225rem + ((1vw - 0.2rem) * 0.0804)), 0.3375rem)",
+
+  /* Safari resize fix */
+  minHeight: "0vw",
+
   span: {
     border: "2px solid white",
-    width: "$x_2",
-    height: "$x_2",
+    width: "var(--size)",
+    height: "var(--size)",
 
     borderRadius: "$full",
 
@@ -297,17 +306,9 @@ const Pagination = styled("div", {
       backgroundColor: "white",
     },
     "+ span": {
-      marginLeft: "$x_4",
+      marginLeft: "var(--space-between-circles)",
     },
-
-    "@3": {
-      width: "$x_4",
-      height: "$x_4",
-      "+ span": {
-        marginLeft: "$x_8",
-      },
-    },
-
+    
     cursor: "not-allowed",
   },
 });
