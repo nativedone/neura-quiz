@@ -12,12 +12,12 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     const targetElement = document.querySelector("body");
     disableBodyScroll(targetElement, {
-      allowTouchMove: el => {
+      allowTouchMove: (el) => {
         while (el && el !== document.body) {
-          if (el.getAttribute('body-scroll-lock-ignore') !== null) {
+          if (el.getAttribute("body-scroll-lock-ignore") !== null) {
             return true;
           }
-    
+
           el = el.parentElement;
         }
       },
@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps }) {
       {/* Global Site Tag (gtag.js) - Google Analytics */}
       <Script
         strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GTM_ID}`}
       />
       <Script
         id="gtag-init"
@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${gtag.GA_TRACKING_ID}', {
+            gtag('config', '${gtag.GTM_ID}', {
               page_path: window.location.pathname,
             });
           `,
