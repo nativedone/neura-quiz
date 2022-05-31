@@ -10,7 +10,7 @@ export function BackgroundVideoMobile({ hasStarted }) {
       playsInline={true}
       className={hasStarted ? "zoom-out" : ""}
     >
-      <source src="/assets/video-mobile-922-1920.mp4#t=2" type="video/mp4" />
+      <source src="/assets/quiz-digital-model-human-brain-1920x922_10MB.HEVC.P8.webm#t=2" type="video/webm" />
     </Video>
   );
 }
