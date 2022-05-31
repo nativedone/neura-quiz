@@ -6,7 +6,7 @@ export function BackgroundVideoDesktop() {
     mediaQueryType: "landscape",
     // matchingSuccessData: "/assets/video-desktop-2000k-no-audio.mp4#t=2",
     // matchingSuccessData: "/assets/output-1920x1800-3000k -noaudio.mp4#t=2",
-    matchingSuccessData: "/assets/quiz-digital-model-human-brain-desktop-F-720.P8.webm#t=2",
+    matchingSuccessData: "/assets/quiz-digital-model-human-brain-desktop-F-720.P8.webm#t=3",
     matchingFailData: "", // we don't let the browser to download the desktop video if user is on mobile
   });
 

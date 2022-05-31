@@ -1,8 +1,17 @@
 import { styled } from "@theme";
+import { useSources } from "@hooks/use-sources";
+
 
 export function BackgroundVideoMobile({ hasStarted }) {
+  const source = useSources({
+    mediaQueryType: "large_mobile_and_under",
+    matchingSuccessData: "/assets/quiz-digital-model-human-brain-1920x922_10MB.HEVC.P8.webm#t=2",
+    matchingFailData: "", // we don't let the browser to download the desktop video if user is on mobile
+  });
+
   return (
     <Video
+      key={source}
       autoPlay={true}
       preload="auto"
       muted={true}
@@ -10,7 +19,7 @@ export function BackgroundVideoMobile({ hasStarted }) {
       playsInline={true}
       className={hasStarted ? "zoom-out" : ""}
     >
-      <source src="/assets/quiz-digital-model-human-brain-1920x922_10MB.HEVC.P8.webm#t=2" type="video/webm" />
+      <source src={source} type="video/webm" />
     </Video>
   );
 }
