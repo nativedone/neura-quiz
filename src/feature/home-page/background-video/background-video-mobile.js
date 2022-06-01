@@ -5,7 +5,8 @@ import { useSources } from "@hooks/use-sources";
 export function BackgroundVideoMobile({ hasStarted }) {
   const source = useSources({
     mediaQueryType: "large_mobile_and_under",
-    matchingSuccessData: "/assets/quiz-digital-model-human-brain-1920x922_10MB.HEVC.mp4#t=2",
+    // matchingSuccessData: "/assets/quiz-digital-model-human-brain-1920x922_10MB.HEVC.mp4#t=2",
+    matchingSuccessData: "/assets/video-mobile-922-1920.mp4#t=2",
     matchingFailData: "", // we don't let the browser to download the desktop video if user is on mobile
   });
 
