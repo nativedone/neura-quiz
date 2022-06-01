@@ -1,6 +1,8 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { getCssText } from "@theme";
 
+import * as gtag from "@lib/gtm";
+
 class MyDocument extends Document {
   render() {
     return (
@@ -21,6 +23,14 @@ class MyDocument extends Document {
           <link rel="preload" as="video" href="/assets/922×1920.mp4" />
         </Head>
         <body>
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${gtag.GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
           <Main />
           {/* Here we will mount our modal portal */}
           <div id="modal" />
