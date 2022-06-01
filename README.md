@@ -14,6 +14,7 @@ deploy discovery page production url
 fix GTM noscript tag
 fix gtm afterInteractive
 fix mobile video not playing on safari
+revert to previous mobile video
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
