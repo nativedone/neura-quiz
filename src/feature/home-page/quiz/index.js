@@ -78,7 +78,7 @@ export function Quiz() {
                 Click{" "}
                 <a
                   className="external-link"
-                  href="https://neura-discovery.vercel.app/"
+                  href="https://discovery.neura.edu.au/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -93,7 +93,7 @@ export function Quiz() {
             <Button
               as="a"
               variant="secondary"
-              href="https://neura-discovery.vercel.app/"
+              href="https://discovery.neura.edu.au/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -287,10 +287,12 @@ const Pagination = styled("div", {
   alignItems: "center",
 
   /* 0.65625rem(10.5px) @ 20rem(320px) increasing to 1.3125rem(21px) @ 160rem(2560px) */
-  "--size": "clamp(0.65625rem, calc(0.65625rem + ((1vw - 0.2rem) * 0.4688)), 1.3125rem)",
+  "--size":
+    "clamp(0.65625rem, calc(0.65625rem + ((1vw - 0.2rem) * 0.4688)), 1.3125rem)",
 
   /* 0.225rem(3.6px) @ 20rem(320px) increasing to 0.3375rem(5.4px) @ 160rem(2560px) */
-  "--space-between-circles": "clamp(0.225rem, calc(0.225rem + ((1vw - 0.2rem) * 0.0804)), 0.3375rem)",
+  "--space-between-circles":
+    "clamp(0.225rem, calc(0.225rem + ((1vw - 0.2rem) * 0.0804)), 0.3375rem)",
 
   /* Safari resize fix */
   minHeight: "0vw",
@@ -308,7 +310,7 @@ const Pagination = styled("div", {
     "+ span": {
       marginLeft: "var(--space-between-circles)",
     },
-    
+
     cursor: "not-allowed",
   },
 });
