@@ -96,6 +96,11 @@ export function Quiz() {
               href="https://discovery.neura.edu.au/"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => gtag.event({
+                category: "Buttons",
+                action: "Click",
+                label: "Clicked Discover more button",
+              })}
             >
               DISCOVER MORE
             </Button>
