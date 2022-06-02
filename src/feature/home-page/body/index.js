@@ -28,7 +28,8 @@ export function Body() {
   const [state, setState] = useState("idle");
 
   const route = useRouter();
-  const { restart } = route.query;
+  const { restart, started } = route.query;
+  const skipForm = started === 'yes';
 
   useEffect(() => {
     if (state === "idle") {
@@ -53,13 +54,17 @@ export function Body() {
   }, [state]);
 
   useEffect(() => {
-    if (!restart) {
+    if (!restart & !skipForm) {
+      return;
+    }
+    if (!skipForm) {
+      setState("idle");
       return;
     }
 
-    setState("idle");
-  }, [restart]);
-
+    setState("answering");
+  }, [restart, skipForm]);
+  
   return (
     <BodyContainer className={state}>
       {state === "idle" && (

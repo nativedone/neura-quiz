@@ -6,14 +6,15 @@ import { VisuallyHidden } from "@components/visually-hidden";
 export function LogoMenuLink() {
   const route = useRouter();
 
-  const { restart } = route.query;
+  const { restart, started } = route.query;
+  const skipForm = started ? { started: 'yes'} : {}
 
   return (
     <div
       onClick={() =>
         Router.push(
           {
-            query: { restart: restart ? parseInt(restart, 10) + 1 : 1 },
+            query: { restart: restart ? parseInt(restart, 10) + 1 : 1, ...skipForm },
           },
           undefined,
           // shallow avoids double re-render
