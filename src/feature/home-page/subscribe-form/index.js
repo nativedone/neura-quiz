@@ -27,6 +27,21 @@ export function SubscribeForm({ onSuccess }) {
       return;
     }
 
+    const hasSubmitted = localStorage.getItem('has-submitted');
+
+    const shouldSkip = hasSubmitted === "yes"
+    if (shouldSkip) {
+      setStatus("success");
+      onSuccess();
+
+      // Business logic: do not call api again if they have already submitted the form.
+      // it makes hart to track when the same use repeatedly submits the form
+      // console.log("SKIP api call")
+      return;
+    }
+
+    // console.log("will call api")
+
     const { email, firstName, lastName, phoneNumber, postCode } = values;
     const searchParams = new URLSearchParams(location.search);
 
@@ -58,6 +73,7 @@ export function SubscribeForm({ onSuccess }) {
 
         setStatus("success");
         onSuccess();
+        localStorage.setItem('has-submitted', "yes");
       })
       .catch((error) => {
         setStatus("error");
