@@ -14,33 +14,36 @@ export function Quiz() {
   const [score, setScore] = useState(0);
 
   useEffect(() => {
-    // This is necessary in case the user navigates directly to this url
-    (function (w, d, s, n, a) {
-      if (!w[n]) {
-        var l = "call,catch,on,once,set,then,track".split(","),
-          i,
-          o = function (n) {
-            return "function" == typeof n
-              ? o.l.push([arguments]) && o
-              : function () {
-                  return o.l.push([n, arguments]) && o;
-                };
-          },
-          t = d.getElementsByTagName(s)[0],
-          j = d.createElement(s);
-        j.async = !0;
-        j.src = "https://cdn.fundraiseup.com/widget/" + a;
-        t.parentNode.insertBefore(j, t);
-        o.s = Date.now();
-        o.v = 4;
-        o.h = w.location.href;
-        o.l = [];
-        for (i = 0; i < 7; i++) o[l[i]] = o(l[i]);
-        w[n] = o;
-      }
-    })(window, document, "script", "FundraiseUp", "AFRMMDFA");
-
-  }, []);
+    // We only load the script when they finish the quiz to avoid showing annoying
+    // messages during the quiz
+    if (currentQuestion === data.length) {
+      // This is necessary in case the user navigates directly to this url
+      (function (w, d, s, n, a) {
+        if (!w[n]) {
+          var l = "call,catch,on,once,set,then,track".split(","),
+            i,
+            o = function (n) {
+              return "function" == typeof n
+                ? o.l.push([arguments]) && o
+                : function () {
+                    return o.l.push([n, arguments]) && o;
+                  };
+            },
+            t = d.getElementsByTagName(s)[0],
+            j = d.createElement(s);
+          j.async = !0;
+          j.src = "https://cdn.fundraiseup.com/widget/" + a;
+          t.parentNode.insertBefore(j, t);
+          o.s = Date.now();
+          o.v = 4;
+          o.h = w.location.href;
+          o.l = [];
+          for (i = 0; i < 7; i++) o[l[i]] = o(l[i]);
+          w[n] = o;
+        }
+      })(window, document, "script", "FundraiseUp", "AFRMMDFA");
+    }
+  }, [currentQuestion]);
 
   useEffect(() => {
     if (currentQuestion === 0) {
