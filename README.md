@@ -19,6 +19,7 @@ fix gtm events
 skip form collection
 skip miltiple form submission
 add donation form
+avoid showing annoying donation messages before theyn finish the quiz
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
