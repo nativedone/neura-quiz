@@ -14,6 +14,35 @@ export function Quiz() {
   const [score, setScore] = useState(0);
 
   useEffect(() => {
+    // This is necessary in case the user navigates directly to this url
+    (function (w, d, s, n, a) {
+      if (!w[n]) {
+        var l = "call,catch,on,once,set,then,track".split(","),
+          i,
+          o = function (n) {
+            return "function" == typeof n
+              ? o.l.push([arguments]) && o
+              : function () {
+                  return o.l.push([n, arguments]) && o;
+                };
+          },
+          t = d.getElementsByTagName(s)[0],
+          j = d.createElement(s);
+        j.async = !0;
+        j.src = "https://cdn.fundraiseup.com/widget/" + a;
+        t.parentNode.insertBefore(j, t);
+        o.s = Date.now();
+        o.v = 4;
+        o.h = w.location.href;
+        o.l = [];
+        for (i = 0; i < 7; i++) o[l[i]] = o(l[i]);
+        w[n] = o;
+      }
+    })(window, document, "script", "FundraiseUp", "AFRMMDFA");
+
+  }, []);
+
+  useEffect(() => {
     if (currentQuestion === 0) {
       return;
     }
@@ -74,18 +103,21 @@ export function Quiz() {
                   we know more about space than we do about the human brain?
                 </strong>
               </p>
+
               <p className="paragraph">
-                Click{" "}
-                <a
-                  className="external-link"
-                  href="https://discovery.neura.edu.au/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  here
-                </a>{" "}
-                to come on a discovery journey into the brain with NeuRA.
+                You can help NeuRA researchers explore the brain by{" "}
+                <a className="external-link" href="#?form=discovery#now">
+                  making a donation today
+                </a>
+                .
               </p>
+
+              <DonateButtonWrapper>
+                <a
+                  href="#XQJDKHZF"
+                  style={{ display: "block", zIndex: 9999999999 }}
+                />
+              </DonateButtonWrapper>
             </Box>
           </ScrollAreaContainer>
           <Navigation>
@@ -96,11 +128,13 @@ export function Quiz() {
               href="https://discovery.neura.edu.au/"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => gtag.event({
-                category: "Buttons",
-                action: "Click",
-                label: "Clicked Discover more button",
-              })}
+              onClick={() =>
+                gtag.event({
+                  category: "Buttons",
+                  action: "Click",
+                  label: "Clicked Discover more button",
+                })
+              }
             >
               DISCOVER MORE
             </Button>
@@ -318,4 +352,11 @@ const Pagination = styled("div", {
 
     cursor: "not-allowed",
   },
+});
+
+const DonateButtonWrapper = styled("div", {
+  marginTop: "$x_2",
+
+  display: "flex",
+  justifyContent: "center",
 });
