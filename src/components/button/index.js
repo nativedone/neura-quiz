@@ -39,6 +39,21 @@ export const Button = styled("button", {
         fontSize: "$0",
         backgroundColor: "transparent",
       },
+      accent: {
+        fontSize: "$0",
+        backgroundColor: "rgb(166, 0, 50)",
+        border: "0px solid rgb(0, 0, 0)",
+        margin: "0 auto",
+        overflow: "hidden",
+
+        "@media (hover: hover) and (pointer: fine)": {
+          "&:hover": {
+            cursor: "pointer",
+            backgroundColor: "rgb(166, 0, 50)",
+            color: "white",
+          },
+        },
+      },
     },
     hidden: {
       true: {

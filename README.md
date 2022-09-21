@@ -18,6 +18,8 @@ revert to previous mobile video
 fix gtm events
 skip form collection
 skip miltiple form submission
+add donation form
+make donation button always visible
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 

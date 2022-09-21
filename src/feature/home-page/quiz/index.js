@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 
 import { styled } from "@theme";
 import { Button } from "@components/button";
+import { DonateButton } from "@components/donate-button";
 import { Logo } from "@components/logo";
 import { ScrollAreaContainer } from "@components/scroll-area-container";
 import * as gtag from "@lib/gtm";
@@ -12,6 +13,38 @@ export function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentAnswerStatus, setCurrentAnswerStatus] = useState("idle"); // correct or wrong
   const [score, setScore] = useState(0);
+
+  useEffect(() => {
+    // We only load the script when they finish the quiz to avoid showing annoying
+    // messages during the quiz
+    if (currentQuestion === data.length) {
+      // This is necessary in case the user navigates directly to this url
+      (function (w, d, s, n, a) {
+        if (!w[n]) {
+          var l = "call,catch,on,once,set,then,track".split(","),
+            i,
+            o = function (n) {
+              return "function" == typeof n
+                ? o.l.push([arguments]) && o
+                : function () {
+                    return o.l.push([n, arguments]) && o;
+                  };
+            },
+            t = d.getElementsByTagName(s)[0],
+            j = d.createElement(s);
+          j.async = !0;
+          j.src = "https://cdn.fundraiseup.com/widget/" + a;
+          t.parentNode.insertBefore(j, t);
+          o.s = Date.now();
+          o.v = 4;
+          o.h = w.location.href;
+          o.l = [];
+          for (i = 0; i < 7; i++) o[l[i]] = o(l[i]);
+          w[n] = o;
+        }
+      })(window, document, "script", "FundraiseUp", "AFRMMDFA");
+    }
+  }, [currentQuestion]);
 
   useEffect(() => {
     if (currentQuestion === 0) {
@@ -58,9 +91,8 @@ export function Quiz() {
       score <= data.length / 2 ? lowScoreResultMessage : highScoreResultMessage;
 
     return (
-      <Container key="result">
+      <Container key="result" className="result-call-to-action">
         <InnerContainer>
-          <ScrollAreaContainer>
             <Box className="has-radius">
               <span className="heading">
                 {`You got ${score} out of ${data.length} correct!`}
@@ -74,20 +106,17 @@ export function Quiz() {
                   we know more about space than we do about the human brain?
                 </strong>
               </p>
+
               <p className="paragraph">
-                Click{" "}
-                <a
-                  className="external-link"
-                  href="https://discovery.neura.edu.au/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  here
-                </a>{" "}
-                to come on a discovery journey into the brain with NeuRA.
+                You can help NeuRA researchers explore the brain by{" "}
+                <a className="external-link" href="#?form=discovery#now">
+                  making a donation today
+                </a>
+                .
               </p>
+
+              <DonateButton />
             </Box>
-          </ScrollAreaContainer>
           <Navigation>
             <Logo />
             <Button
@@ -96,11 +125,13 @@ export function Quiz() {
               href="https://discovery.neura.edu.au/"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => gtag.event({
-                category: "Buttons",
-                action: "Click",
-                label: "Clicked Discover more button",
-              })}
+              onClick={() =>
+                gtag.event({
+                  category: "Buttons",
+                  action: "Click",
+                  label: "Clicked Discover more button",
+                })
+              }
             >
               DISCOVER MORE
             </Button>
@@ -193,7 +224,7 @@ const Box = styled("div", {
   margin: "0 auto",
 
   zIndex: "$50",
-  width: "85vw",
+  width: "100%",
   // maxHeight: "50vh",
   // overflow: "auto",
 
@@ -237,19 +268,18 @@ const Box = styled("div", {
   },
 
   "@3": {
-    width: "35vw",
     padding: "$x_2",
   },
 });
 
-export function Container({ children }) {
+export function Container({ children, className }) {
   const [opacity, setOpacity] = useState(0);
 
   useEffect(() => {
     setOpacity(1);
   }, []);
 
-  return <BaseContainer style={{ opacity }}>{children}</BaseContainer>;
+  return <BaseContainer className={className} style={{ opacity }}>{children}</BaseContainer>;
 }
 
 const BaseContainer = styled("div", {
@@ -263,6 +293,27 @@ const BaseContainer = styled("div", {
   "@3": {
     width: "50vw",
     paddingBottom: "0px",
+
+    "&.result-call-to-action": {
+      width: "75vw",
+  
+    },
+  },
+  "@5": {
+    width: "50vw",
+    paddingBottom: "0px",
+
+    "&.result-call-to-action": {
+      width: "67vw",
+  
+    },
+  },
+  "@9": {
+    width: "35vw",
+    "&.result-call-to-action": {
+      width: "35vw",
+  
+    },
   },
 
   transition: "opacity 1000ms",
@@ -272,11 +323,10 @@ const Navigation = styled("div", {
   display: "flex",
   justifyContent: "space-between",
 
-  width: "85vw",
+  width: "100%",
   paddingTop: "$x",
 
   "@3": {
-    width: "50vw",
     paddingTop: "$x_2",
   },
 
@@ -319,3 +369,4 @@ const Pagination = styled("div", {
     cursor: "not-allowed",
   },
 });
+
