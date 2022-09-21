@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 
 import { styled } from "@theme";
 import { Button } from "@components/button";
+import { DonateButton } from "@components/donate-button";
 import { Logo } from "@components/logo";
 import { ScrollAreaContainer } from "@components/scroll-area-container";
 import * as gtag from "@lib/gtm";
@@ -90,9 +91,8 @@ export function Quiz() {
       score <= data.length / 2 ? lowScoreResultMessage : highScoreResultMessage;
 
     return (
-      <Container key="result">
+      <Container key="result" className="result-call-to-action">
         <InnerContainer>
-          <ScrollAreaContainer>
             <Box className="has-radius">
               <span className="heading">
                 {`You got ${score} out of ${data.length} correct!`}
@@ -115,14 +115,8 @@ export function Quiz() {
                 .
               </p>
 
-              <DonateButtonWrapper>
-                <a
-                  href="#XQJDKHZF"
-                  style={{ display: "block", zIndex: 9999999999 }}
-                />
-              </DonateButtonWrapper>
+              <DonateButton />
             </Box>
-          </ScrollAreaContainer>
           <Navigation>
             <Logo />
             <Button
@@ -230,7 +224,7 @@ const Box = styled("div", {
   margin: "0 auto",
 
   zIndex: "$50",
-  width: "85vw",
+  width: "100%",
   // maxHeight: "50vh",
   // overflow: "auto",
 
@@ -274,19 +268,18 @@ const Box = styled("div", {
   },
 
   "@3": {
-    width: "35vw",
     padding: "$x_2",
   },
 });
 
-export function Container({ children }) {
+export function Container({ children, className }) {
   const [opacity, setOpacity] = useState(0);
 
   useEffect(() => {
     setOpacity(1);
   }, []);
 
-  return <BaseContainer style={{ opacity }}>{children}</BaseContainer>;
+  return <BaseContainer className={className} style={{ opacity }}>{children}</BaseContainer>;
 }
 
 const BaseContainer = styled("div", {
@@ -300,6 +293,27 @@ const BaseContainer = styled("div", {
   "@3": {
     width: "50vw",
     paddingBottom: "0px",
+
+    "&.result-call-to-action": {
+      width: "75vw",
+  
+    },
+  },
+  "@5": {
+    width: "50vw",
+    paddingBottom: "0px",
+
+    "&.result-call-to-action": {
+      width: "67vw",
+  
+    },
+  },
+  "@9": {
+    width: "35vw",
+    "&.result-call-to-action": {
+      width: "35vw",
+  
+    },
   },
 
   transition: "opacity 1000ms",
@@ -309,11 +323,10 @@ const Navigation = styled("div", {
   display: "flex",
   justifyContent: "space-between",
 
-  width: "85vw",
+  width: "100%",
   paddingTop: "$x",
 
   "@3": {
-    width: "50vw",
     paddingTop: "$x_2",
   },
 
@@ -357,9 +370,3 @@ const Pagination = styled("div", {
   },
 });
 
-const DonateButtonWrapper = styled("div", {
-  marginTop: "$x_2",
-
-  display: "flex",
-  justifyContent: "center",
-});
