@@ -27,9 +27,9 @@ export function SubscribeForm({ onSuccess }) {
       return;
     }
 
-    const hasSubmitted = localStorage.getItem('has-submitted');
+    const hasSubmitted = localStorage.getItem("has-submitted");
 
-    const shouldSkip = hasSubmitted === "yes"
+    const shouldSkip = hasSubmitted === "yes";
     if (shouldSkip) {
       setStatus("success");
       onSuccess();
@@ -73,7 +73,7 @@ export function SubscribeForm({ onSuccess }) {
 
         setStatus("success");
         onSuccess();
-        localStorage.setItem('has-submitted', "yes");
+        localStorage.setItem("has-submitted", "yes");
       })
       .catch((error) => {
         setStatus("error");
@@ -83,9 +83,8 @@ export function SubscribeForm({ onSuccess }) {
 
   let information = (
     <p className="description">
-      By signing, you may receive communications about how you can help NeuRA
-      find cures for diseases and disability of the brain and nervous system, on
-      the understanding you agree to our{" "}
+      We’ll use your details to contact you about improving the lives of people
+      with diseases of the brain and nervous system.{" "}
       <a
         href="https://foundation.neura.edu.au/privacy/"
         target="_blank"
