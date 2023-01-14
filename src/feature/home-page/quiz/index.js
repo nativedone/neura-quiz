@@ -63,6 +63,9 @@ export function Quiz() {
         action: "Completed",
         label: "Completed the quiz",
       };
+
+      document.documentElement.style.setProperty('--share-button-visibility', 'visible');
+
     }
 
     gtag.event(trackingStep);

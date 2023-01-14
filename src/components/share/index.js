@@ -49,6 +49,8 @@ const ShareContainer = styled("div", {
 
   color: "white",
 
+  visibility: "var(--share-button-visibility)",
+
   "@media (hover: hover) and (pointer: fine)": {
     "&:hover": {
       // color: "yellow",

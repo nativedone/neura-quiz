@@ -48,6 +48,10 @@ body {
 
   /* Safari resize fix */
   min-height: 0vw;
+
+
+  /* Handle share button visibility */
+  --share-button-visibility: hidden;
 }
 
 body {
