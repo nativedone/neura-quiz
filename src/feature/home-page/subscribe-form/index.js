@@ -269,7 +269,7 @@ const FormContainer = styled("div", {
   justifyContent: "center",
 
   "span.heading": {
-    fontSize: "$0",
+    fontSize: "$-3",
     fontWeight: "$normal",
     lineHeight: "$tight",
     color: "white",
@@ -303,7 +303,7 @@ const Form = styled("form", {
     color: "white",
     width: "100%",
 
-    fontSize: "max(16px, var(--step-0))",
+    fontSize: "max(16px, var(--step--3))",
     lineHeight: "100%",
 
     paddingLeft: "$x_4",
@@ -322,7 +322,7 @@ const Form = styled("form", {
 
     "&::placeholder": {
       color: "rgba(255,255,255, 0.75)",
-      fontSize: "max(16px, var(--step-0))",
+      fontSize: "max(16px, var(--step--3))",
     },
   },
 
