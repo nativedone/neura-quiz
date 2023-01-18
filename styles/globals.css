@@ -20,8 +20,8 @@ body {
   /* ----------------- Typography scale system: ----------------- */
   /* https://utopia.fyi/type/calculator/?c=320,16,1.1179,2560,32,1.143,5,6,&s=0.75%7C0.5%7C0.25,1.5%7C2%7C3%7C4%7C6,s-l */
 
-  --step--6: clamp(0.90rem, calc(0.46rem + 0.27vw), 0.51rem);
-  --step--5: clamp(1.03rem, calc(0.51rem + 0.32vw), 0.57rem);
+  --step--6: clamp(0.51rem, calc(0.46rem + 0.27vw), 0.90rem);
+  --step--5: clamp(0.57rem, calc(0.51rem + 0.32vw), 1.03rem);
   --step--4: clamp(0.64rem, calc(0.56rem + 0.38vw), 1.17rem);
   --step--3: clamp(0.72rem, calc(0.63rem + 0.45vw), 1.34rem);
   --step--2: clamp(0.80rem, calc(0.70rem + 0.52vw), 1.53rem);
@@ -48,6 +48,10 @@ body {
 
   /* Safari resize fix */
   min-height: 0vw;
+
+
+  /* Handle share button visibility */
+  --share-button-visibility: hidden;
 }
 
 body {

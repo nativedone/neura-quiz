@@ -71,6 +71,7 @@ const ScrollAreaScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
   // disable browser handling of all panning and zooming gestures on touch devices
   touchAction: "none",
   padding: 2,
+  marginRight: "1%",
   background: "transparent",
   transition: "background 160ms ease-out",
   "&:hover": { background: "rgba(0, 0, 0, 0.7)" },
@@ -80,11 +81,16 @@ const ScrollAreaScrollbar = styled(ScrollAreaPrimitive.Scrollbar, {
     height: SCROLLBAR_SIZE,
   },
   zIndex: "$50",
+
+  "@3": {
+    padding: "unset",
+  },
 });
 
 const ScrollAreaThumb = styled(ScrollAreaPrimitive.Thumb, {
   flex: 1,
-  background: "hsl(253 3.5% 53.5%)",
+  background: "hsl(225deg, 8%, 70%)",
+  
   borderRadius: SCROLLBAR_SIZE,
   // increase target size for touch devices https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
   position: "relative",

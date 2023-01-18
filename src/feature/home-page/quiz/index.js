@@ -63,6 +63,9 @@ export function Quiz() {
         action: "Completed",
         label: "Completed the quiz",
       };
+
+      document.documentElement.style.setProperty('--share-button-visibility', 'visible');
+
     }
 
     gtag.event(trackingStep);
@@ -84,39 +87,36 @@ export function Quiz() {
   }, [currentQuestion]);
 
   if (currentQuestion === data.length) {
-    const lowScoreResultMessage = `We hope you enjoyed learning something new about the brain! If you did, there is still so much more to discover.`;
-    const highScoreResultMessage = `Well done! You clearly take an interest in the brain, which is great because there is still so much more to discover!`;
-
-    const messageBasedOnScore =
-      score <= data.length / 2 ? lowScoreResultMessage : highScoreResultMessage;
 
     return (
       <Container key="result" className="result-call-to-action">
         <InnerContainer>
-            <Box className="has-radius">
-              <span className="heading">
-                {`You got ${score} out of ${data.length} correct!`}
-              </span>
+          <Box className="has-radius">
+            <span className="heading">
+              {`You got ${score} out of ${data.length} correct!`}
+            </span>
 
-              <p className="paragraph">{messageBasedOnScore}</p>
+            <p className="paragraph">
+              Thanks so much for completing the quiz and taking an interest in
+              the brain.
+            </p>
 
-              <p className="paragraph">
-                In fact, did you know that{" "}
-                <strong>
-                  we know more about space than we do about the human brain?
-                </strong>
-              </p>
+            <p className="paragraph">
+              Millions of people live with brain disorders, mental health
+              issues, disabilities and injuries. Our scientists are dedicated to
+              helping them by unlocking the many mysteries of the brain and
+              mind.
+            </p>
 
-              <p className="paragraph">
-                You can help NeuRA researchers explore the brain by{" "}
-                <a className="external-link" href="#?form=discovery#now">
-                  making a donation today
-                </a>
-                .
-              </p>
+            <p className="paragraph">
+            Please join us now to become a Discovery Partner.{" "}
+              <strong>
+              Every one of your gifts brings us closer to a major breakthrough.
+              </strong>
+            </p>
 
-              <DonateButton />
-            </Box>
+            <DonateButton />
+          </Box>
           <Navigation>
             <Logo />
             <Button
@@ -279,7 +279,11 @@ export function Container({ children, className }) {
     setOpacity(1);
   }, []);
 
-  return <BaseContainer className={className} style={{ opacity }}>{children}</BaseContainer>;
+  return (
+    <BaseContainer className={className} style={{ opacity }}>
+      {children}
+    </BaseContainer>
+  );
 }
 
 const BaseContainer = styled("div", {
@@ -296,7 +300,6 @@ const BaseContainer = styled("div", {
 
     "&.result-call-to-action": {
       width: "75vw",
-  
     },
   },
   "@5": {
@@ -305,14 +308,12 @@ const BaseContainer = styled("div", {
 
     "&.result-call-to-action": {
       width: "67vw",
-  
     },
   },
   "@9": {
     width: "35vw",
     "&.result-call-to-action": {
       width: "35vw",
-  
     },
   },
 
@@ -369,4 +370,3 @@ const Pagination = styled("div", {
     cursor: "not-allowed",
   },
 });
-
