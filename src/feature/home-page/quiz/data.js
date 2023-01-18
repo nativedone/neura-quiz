@@ -50,25 +50,25 @@ export const data = [
       ],
     },
   },
-  {
-    question: `What is the most common cause of traumatic brain injuries in Australia?`,
-    options: [
-      { label: "Car accidents", isCorrect: false },
-      { label: "Falls", isCorrect: true },
-      { label: "Assault", isCorrect: false },
-      { label: "Stroke", isCorrect: false },
-    ],
-    explanation: {
-      title: "Answer: Falls.",
-      paragraphs: [
-        `A traumatic brain injury (TBI) occurs when an external force to the head impacts the way your brain normally works. TBIs can be as mild as some dizziness and confusion or as serious as lifelong brain damage or even death.`,
+  // {
+  //   question: `What is the most common cause of traumatic brain injuries in Australia?`,
+  //   options: [
+  //     { label: "Car accidents", isCorrect: false },
+  //     { label: "Falls", isCorrect: true },
+  //     { label: "Assault", isCorrect: false },
+  //     { label: "Stroke", isCorrect: false },
+  //   ],
+  //   explanation: {
+  //     title: "Answer: Falls.",
+  //     paragraphs: [
+  //       `A traumatic brain injury (TBI) occurs when an external force to the head impacts the way your brain normally works. TBIs can be as mild as some dizziness and confusion or as serious as lifelong brain damage or even death.`,
 
-        `The main cause of TBIs in Australia is falls — and not just in older people! Fall injuries account for about 40% of all hospitalised injuries and are the leading cause of injury deaths in Australia. Research shows that children are more likely to experience a TBI after falling from furniture, while young adults were more likely to get a TBI from collisions and pushes than other age groups.`,
+  //       `The main cause of TBIs in Australia is falls — and not just in older people! Fall injuries account for about 40% of all hospitalised injuries and are the leading cause of injury deaths in Australia. Research shows that children are more likely to experience a TBI after falling from furniture, while young adults were more likely to get a TBI from collisions and pushes than other age groups.`,
 
-        `The risk of slips, trips and stumbles increases greater with age and become more dangerous — people aged 65 and over were more likely to be hospitalised or die due to a fall compared with other life-stages.`,
-      ],
-    },
-  },
+  //       `The risk of slips, trips and stumbles increases greater with age and become more dangerous — people aged 65 and over were more likely to be hospitalised or die due to a fall compared with other life-stages.`,
+  //     ],
+  //   },
+  // },
   {
     question: `Does your brain really freeze when you eat ice-cream?`,
     options: [
@@ -86,21 +86,21 @@ export const data = [
       ],
     },
   },
-  // {
-  //   question: `What is dementia?`,
-  //   options: [
-  //     { label: "Another name for Alzheimer’s Disease", isCorrect: false },
-  //     { label: "An umbrella term for 50+ conditions", isCorrect: true },
-  //   ],
-  //   explanation: {
-  //     title: "Answer: An umbrella term for 50+ conditions.",
-  //     paragraphs: [
-  //       `While many people use dementia interchangeably with Alzheimer’s Disease, they are two different things. Dementia isn’t one specific disease but rather a collection of symptoms that are caused by the deterioration of brain tissue. Therefore, Alzheimer’s is a type of dementia, along with 50 or so other disorders that affect the brain.`,
+  {
+    question: `What is dementia?`,
+    options: [
+      { label: "Another name for Alzheimer’s Disease", isCorrect: false },
+      { label: "An umbrella term for 50+ conditions", isCorrect: true },
+    ],
+    explanation: {
+      title: "Answer: An umbrella term for 50+ conditions.",
+      paragraphs: [
+        `While many people use dementia interchangeably with Alzheimer’s Disease, they are two different things. Dementia isn’t one specific disease but rather a collection of symptoms that are caused by the deterioration of brain tissue. Therefore, Alzheimer’s is a type of dementia, along with 50 or so other disorders that affect the brain.`,
 
-  //       `The most common symptoms of dementia are memory loss, confusion, personality changes and the loss of ability to perform everyday tasks. While dementia can happen to anyone, it is most common in people over the age of 65. Yet it’s important to remember that dementia is not a normal part of ageing, and a medical diagnosis should be obtained at an early stage when symptoms first appear.`
-  //     ],
-  //   },
-  // },
+        `The most common symptoms of dementia are memory loss, confusion, personality changes and the loss of ability to perform everyday tasks. While dementia can happen to anyone, it is most common in people over the age of 65. Yet it’s important to remember that dementia is not a normal part of ageing, and a medical diagnosis should be obtained at an early stage when symptoms first appear.`
+      ],
+    },
+  },
   {
     question: `All Australian research about diseases of the brain and nervous system is funded by the government.`,
     options: [
