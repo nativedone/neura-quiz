@@ -51,6 +51,8 @@ export function SubscribeForm({ onSuccess }) {
     // fake api call for demo purposed only
     setTimeout(() => {
       setStatus("success");
+      onSuccess();
+      // localStorage.setItem("has-submitted", "yes");
     }, 300);
     return;
 
