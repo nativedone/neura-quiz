@@ -122,7 +122,7 @@ export function Quiz() {
             <Button
               as="a"
               variant="secondary"
-              href="https://neuradiscovery.vercel.app/"
+              href="https://demo-neura-discovery.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() =>
