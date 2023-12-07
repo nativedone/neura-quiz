@@ -47,6 +47,14 @@ export function SubscribeForm({ onSuccess }) {
 
     setStatus("loading");
 
+    // TODO: remove this if client decides to use the real api
+    // fake api call for demo purposed only
+    setTimeout(() => {
+      setStatus("success");
+    }, 300);
+    return;
+
+
     fetch(process.env.NEXT_PUBLIC_SUBSCRIBE_URL, {
       method: "POST",
       body: JSON.stringify({
